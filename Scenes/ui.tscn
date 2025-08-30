@@ -1,0 +1,189 @@
+[gd_scene load_steps=5 format=3 uid="uid://7nodsdgru6nd"]
+
+[ext_resource type="Script" path="res://Scenes/ui.gd" id="1_wg176"]
+[ext_resource type="Texture2D" uid="uid://d3gxmvn7jx4pl" path="res://Assets/bubble_placeholder.png" id="2_jt7ei"]
+[ext_resource type="Texture2D" uid="uid://cdiq2xm0g2my4" path="res://Assets/heart_full.png" id="2_od42e"]
+[ext_resource type="Texture2D" uid="uid://4n1ycpv03a0c" path="res://Assets/heart_empty.png" id="3_su6do"]
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wg176")
+heart_full = ExtResource("2_od42e")
+heart_empty = ExtResource("3_su6do")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MarginContainerProgress" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -256.0
+offset_top = -48.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/MarginContainerProgress"]
+custom_minimum_size = Vector2(256, 48)
+layout_mode = 2
+max_value = 120.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainerProgress/ProgressBar"]
+layout_mode = 0
+offset_right = 256.0
+offset_bottom = 48.0
+theme_override_font_sizes/font_size = 32
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainerMLabel" type="MarginContainer" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+
+[node name="MLabel" type="Label" parent="CanvasLayer/MarginContainerMLabel"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "100m"
+vertical_alignment = 1
+
+[node name="MarginContainerCoinLabel" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -88.0
+offset_bottom = 90.0
+grow_horizontal = 0
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 16
+
+[node name="CoinLabel" type="Label" parent="CanvasLayer/MarginContainerCoinLabel"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "100"
+vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/MarginContainerCoinLabel/CoinLabel"]
+position = Vector2(-24, 32)
+scale = Vector2(4.5, 4.5)
+texture = ExtResource("2_jt7ei")
+
+[node name="MarginContainerHealth" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -96.0
+offset_right = 232.0
+grow_vertical = 0
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="VFlowContainer" type="VFlowContainer" parent="CanvasLayer/MarginContainerHealth"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MarginContainerHealth/VFlowContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("2_od42e")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/MarginContainerHealth/VFlowContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("2_od42e")
+expand_mode = 1
+
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/MarginContainerHealth/VFlowContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("2_od42e")
+expand_mode = 1
+
+[node name="UpgradeScreen" type="ColorRect" parent="CanvasLayer"]
+process_mode = 3
+visible = false
+offset_right = 648.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 0.392157)
+
+[node name="MarginContainerButtons" type="MarginContainer" parent="CanvasLayer/UpgradeScreen"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -128.0
+offset_right = 648.0
+offset_bottom = 128.0
+grow_vertical = 2
+theme_override_constants/margin_left = 112
+
+[node name="VFlowContainer" type="VFlowContainer" parent="CanvasLayer/UpgradeScreen/MarginContainerButtons"]
+layout_mode = 2
+theme_override_constants/h_separation = 16
+
+[node name="option1" type="Button" parent="CanvasLayer/UpgradeScreen/MarginContainerButtons/VFlowContainer"]
+custom_minimum_size = Vector2(128, 256)
+layout_mode = 2
+text = "option 1"
+
+[node name="option2" type="Button" parent="CanvasLayer/UpgradeScreen/MarginContainerButtons/VFlowContainer"]
+custom_minimum_size = Vector2(128, 256)
+layout_mode = 2
+text = "option 2"
+
+[node name="option3" type="Button" parent="CanvasLayer/UpgradeScreen/MarginContainerButtons/VFlowContainer"]
+custom_minimum_size = Vector2(128, 256)
+layout_mode = 2
+text = "option 3"
+
+[node name="MarginContainerLabel" type="MarginContainer" parent="CanvasLayer/UpgradeScreen"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -175.0
+offset_right = 175.0
+offset_bottom = 50.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 112
+
+[node name="Label" type="Label" parent="CanvasLayer/UpgradeScreen/MarginContainerLabel"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Choose an Upgrade!"
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/UpgradeScreen"]
+custom_minimum_size = Vector2(256, 48)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 128
+
+[node name="skipbutton" type="Button" parent="CanvasLayer/UpgradeScreen/MarginContainer"]
+layout_mode = 2
+text = "Skip for this one"
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(320, 192)
+
+[connection signal="pressed" from="CanvasLayer/UpgradeScreen/MarginContainer/skipbutton" to="." method="_on_button_pressed"]

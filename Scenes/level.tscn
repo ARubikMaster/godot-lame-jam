@@ -1,0 +1,86 @@
+[gd_scene load_steps=13 format=3 uid="uid://ba84fllgwg8ex"]
+
+[ext_resource type="Script" path="res://Scenes/Camera2D.gd" id="1_hmxxd"]
+[ext_resource type="Script" path="res://Scenes/level.gd" id="1_lb2nx"]
+[ext_resource type="PackedScene" uid="uid://bo3jhj8dfwv20" path="res://Scenes/player.tscn" id="1_yu04c"]
+[ext_resource type="PackedScene" uid="uid://b784y6rjbd1re" path="res://Scenes/oxygen_tank.tscn" id="2_jw4fs"]
+[ext_resource type="Texture2D" uid="uid://d3gxmvn7jx4pl" path="res://Assets/bubble_placeholder.png" id="3_r4h1b"]
+[ext_resource type="PackedScene" uid="uid://7nodsdgru6nd" path="res://Scenes/ui.tscn" id="4_tkrgx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fv4aa"]
+size = Vector2(657, 656)
+
+[sub_resource type="Gradient" id="Gradient_bndoe"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qoe5j"]
+gradient = SubResource("Gradient_bndoe")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.156, 0.789)
+
+[sub_resource type="Gradient" id="Gradient_eh04q"]
+colors = PackedColorArray(2.40654e-06, 0.495823, 0.720737, 1, 2.5028e-06, 0.696799, 0.700017, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vclgo"]
+gradient = SubResource("Gradient_eh04q")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="Gradient" id="Gradient_ej45n"]
+offsets = PackedFloat32Array(0, 0.26, 0.746667, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_lb2nx")
+oxygen_tank_scene = ExtResource("2_jw4fs")
+
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
+script = ExtResource("1_hmxxd")
+player = NodePath("../Player")
+
+[node name="GameplayArea" type="Area2D" parent="Camera2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/GameplayArea"]
+visible = false
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_fv4aa")
+
+[node name="PointLight2D" type="PointLight2D" parent="Camera2D"]
+visible = false
+scale = Vector2(0.75, 0.75)
+energy = 0.75
+blend_mode = 1
+texture = SubResource("GradientTexture2D_qoe5j")
+texture_scale = 14.0
+
+[node name="bg_placeholder" type="TextureRect" parent="Camera2D"]
+offset_left = -328.0
+offset_top = -328.0
+offset_right = 328.0
+offset_bottom = 328.0
+texture = SubResource("GradientTexture2D_vclgo")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Camera2D"]
+position = Vector2(0, 384)
+amount = 6
+lifetime = 1.2
+speed_scale = 0.5
+lifetime_randomness = 0.25
+texture = ExtResource("3_r4h1b")
+emission_shape = 3
+emission_rect_extents = Vector2(320, 1)
+gravity = Vector2(0, -980)
+scale_amount_min = 1.5
+scale_amount_max = 4.5
+color = Color(0.14902, 0.792157, 1, 0.392157)
+color_ramp = SubResource("Gradient_ej45n")
+
+[node name="Player" parent="." instance=ExtResource("1_yu04c")]
+
+[node name="UI" parent="." instance=ExtResource("4_tkrgx")]
+
+[node name="TankSpawnTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="body_exited" from="Camera2D/GameplayArea" to="Camera2D" method="_on_gameplay_area_body_exited"]
+[connection signal="timeout" from="TankSpawnTimer" to="." method="_on_tank_spawn_timer_timeout"]

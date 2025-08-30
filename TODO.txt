@@ -1,0 +1,9 @@
+1 - change ColorRects to sprites with textures
+2 - fix oxygen tank spawn logic and add chest spawn
+3 - make reward gain and magnet upgrades work
+4 - add menu and pausing
+5 - add game over screen
+6 - add polish, effects, animations, particles etc.
+7 - add 3 difficulty modes
+8 - add obstacles (sharks, rocks, spikes etc.)
+9 - add health system
