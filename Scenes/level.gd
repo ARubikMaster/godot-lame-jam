@@ -46,17 +46,3 @@ func _on_music_timer_timeout() -> void:
 	var wait_time = rng.randi_range(60, 70)
 	music_timer.wait_time = wait_time
 	music_timer.start()
-
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("pause"):
-		paused = !paused
-		
-		if paused:
-			music_timer.process_mode = Node.PROCESS_MODE_DISABLED
-			music.process_mode = Node.PROCESS_MODE_DISABLED
-			print("Game Paused")
-			ui.pause()
-		else:
-			music_timer.process_mode = Node.PROCESS_MODE_ALWAYS
-			music.process_mode = Node.PROCESS_MODE_ALWAYS
-			print("Game unpaused")

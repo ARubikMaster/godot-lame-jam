@@ -3,6 +3,8 @@ extends Control
 var upgrade_elements: Array = ["air capacity", "speed", "reward gain", "magnet"]
 var powerup_elements: Array = ["shield", "health"]
 
+var can_pause: bool = true
+
 var prices: Dictionary = {
 	"air capacity": 20,
 	"speed": 30,
@@ -14,6 +16,8 @@ var prices: Dictionary = {
 	}
 @export var heart_full: Texture2D
 @export var heart_empty: Texture2D
+
+@export var menu_scene: PackedScene
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -38,9 +42,13 @@ func _process(_delta):
 	$CanvasLayer/MarginContainerHealth/VFlowContainer/TextureRect2.texture = heart_full if $"../Player".health > 1 else heart_empty
 	$CanvasLayer/MarginContainerHealth/VFlowContainer/TextureRect3.texture = heart_full if $"../Player".health > 2 else heart_empty
 	
+	if Input.is_action_just_pressed("pause") and can_pause:
+		_pause()
+	
 func upgrade_screen():
 	#pause the gameplay
 	get_tree().paused = true
+	can_pause = false
 	$CanvasLayer/UpgradeScreen.show()
 	
 	#merge upgrades and powerups array
@@ -106,6 +114,7 @@ func _on_button_pressed():
 
 func _upgraded(price):
 	#subract item price from player coins
+	can_pause = true
 	$"../Player".coins -= price
 	
 	#disconnect all previously connected signals
@@ -117,8 +126,14 @@ func _upgraded(price):
 	get_tree().paused = false
 	$"../Camera2D".meters += 2
 
-func pause():
-	print("Ui showing")
-	$CanvasLayer/PauseMenu.paused = true
-	$CanvasLayer/PauseMenu.handle_pausing()
+func _pause():
+	$CanvasLayer/PauseMenu.visible = not $CanvasLayer/PauseMenu.visible
+	get_tree().paused = not get_tree().paused
+	$"../Music".playing = not $"../Music".playing
+	$"../MusicTimer".paused = not $"../MusicTimer".paused
 	
+func _on_resume_button_pressed():
+	_pause()
+
+func _on_back_to_menu_pressed():
+	get_tree().change_scene_to_packed(menu_scene)
