@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://ba84fllgwg8ex"]
+[gd_scene load_steps=16 format=3 uid="uid://ba84fllgwg8ex"]
 
 [ext_resource type="Script" path="res://Scenes/Camera2D.gd" id="1_hmxxd"]
 [ext_resource type="Script" path="res://Scenes/level.gd" id="1_lb2nx"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://b784y6rjbd1re" path="res://Scenes/oxygen_tank.tscn" id="2_jw4fs"]
 [ext_resource type="PackedScene" uid="uid://car87ceumpe3" path="res://Scenes/chest.tscn" id="3_ak236"]
 [ext_resource type="Texture2D" uid="uid://d3gxmvn7jx4pl" path="res://Assets/bubble_placeholder.png" id="3_r4h1b"]
-[ext_resource type="PackedScene" uid="uid://cbibuy8r2xa33" path="res://Scenes/coin.tscn" id="4_ljstp"]
 [ext_resource type="PackedScene" uid="uid://7nodsdgru6nd" path="res://Scenes/ui.tscn" id="4_tkrgx"]
 [ext_resource type="Script" path="res://Scenes/music.gd" id="7_xgr7q"]
 [ext_resource type="Script" path="res://Scenes/music_timer.gd" id="8_yfgww"]
@@ -38,7 +37,6 @@ colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 script = ExtResource("1_lb2nx")
 oxygen_tank_scene = ExtResource("2_jw4fs")
 chest_scene = ExtResource("3_ak236")
-coin_scene = ExtResource("4_ljstp")
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("1_hmxxd")
@@ -97,11 +95,7 @@ script = ExtResource("7_xgr7q")
 [node name="MusicTimer" type="Timer" parent="."]
 script = ExtResource("8_yfgww")
 
-[node name="CoinSpawnTimer" type="Timer" parent="."]
-autostart = true
-
 [connection signal="body_exited" from="Camera2D/GameplayArea" to="Camera2D" method="_on_gameplay_area_body_exited"]
 [connection signal="timeout" from="ChestSpawnTimer" to="." method="_on_chest_spawn_timer_timeout"]
 [connection signal="timeout" from="TankSpawnTimer" to="." method="_on_tank_spawn_timer_timeout"]
 [connection signal="timeout" from="MusicTimer" to="." method="_on_music_timer_timeout"]
-[connection signal="timeout" from="CoinSpawnTimer" to="." method="_on_coin_spawn_timer_timeout"]

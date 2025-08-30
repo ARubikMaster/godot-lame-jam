@@ -76,7 +76,7 @@ text = "100"
 vertical_alignment = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/MarginContainerCoinLabel/CoinLabel"]
-position = Vector2(-37, 32)
+position = Vector2(-24, 32)
 scale = Vector2(4.5, 4.5)
 texture = ExtResource("4_vnd5n")
 
