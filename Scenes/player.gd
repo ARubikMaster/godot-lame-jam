@@ -6,7 +6,7 @@ var air_left: float = 100.0
 var max_air: float = 100.0
 var magnet_strength: int = 0
 
-var coins: int = 9999
+var coins: int = 0
 
 var shield: bool = false
 
