@@ -1,13 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://car87ceumpe3"]
 
-[ext_resource type="Script" path="res://Scenes/chest.gd" id="1_kcd6s"]
+[ext_resource type="Script" path="res://Scenes/chest.gd" id="1_2v7la"]
 [ext_resource type="Texture2D" uid="uid://dptiok5bsfb6l" path="res://Assets/chest_closed.png" id="2_vvxo2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ss75h"]
 size = Vector2(64, 64)
 
 [node name="chest" type="Area2D"]
-script = ExtResource("1_kcd6s")
+script = ExtResource("1_2v7la")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(4, 4)
