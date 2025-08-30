@@ -2,6 +2,7 @@ extends Node2D
 
 @export var oxygen_tank_scene: PackedScene
 @export var chest_scene: PackedScene
+@export var coin_scene: PackedScene
 
 @onready var music = $Music
 @onready var music_timer = $MusicTimer
@@ -12,8 +13,12 @@ var paused = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	rng.randomize()
 	$TankSpawnTimer.wait_time = randf_range(3.5, 5.0)
+	rng.randomize()
 	$ChestSpawnTimer.wait_time = randf_range(10.0, 20.0)
+	rng.randomize()
+	$ChestSpawnTimer.wait_time = randf_range(1.0, 2.5)
 	
 	music.play_music()
 	
@@ -26,6 +31,7 @@ func _game_over():
 	get_tree().quit() #placeholder
 
 func _on_tank_spawn_timer_timeout():
+	rng.randomize()
 	$TankSpawnTimer.wait_time = randf_range(3.5, 5.0)
 	
 	var new_tank = oxygen_tank_scene.instantiate()
@@ -33,12 +39,20 @@ func _on_tank_spawn_timer_timeout():
 	add_child(new_tank)
 
 func _on_chest_spawn_timer_timeout() -> void:
+	rng.randomize()
 	$ChestSpawnTimer.wait_time = randf_range(10.0, 20.0)
-	print("chest placed")
 	
 	var new_chest = chest_scene.instantiate()
 	new_chest.global_position = Vector2(randi_range(-300, 300), ($Camera2D.global_position.y + 160) * 1.75)
 	add_child(new_chest)
+
+func _on_coin_spawn_timer_timeout() -> void:
+	rng.randomize()
+	$CoinSpawnTimer.wait_time = randf_range(1.0, 2.5)
+	
+	var new_coin = coin_scene.instantiate()
+	new_coin.global_position = Vector2(randi_range(-300, 300), ($Camera2D.global_position.y + 160) * 1.75)
+	add_child(new_coin)
 
 func _on_music_timer_timeout() -> void:
 	music.play_music()
