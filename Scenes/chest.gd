@@ -16,6 +16,7 @@ func _process(delta):
 
 func _on_body_entered(body):
 	if not opened and body.is_in_group("player"):
+		print("Chest opened")
 		opened = true
 		$Sprite2D.texture = opened_texture
 		
