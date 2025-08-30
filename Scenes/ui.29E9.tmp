@@ -213,4 +213,3 @@ text = "Back to Game"
 position = Vector2(320, 192)
 
 [connection signal="pressed" from="CanvasLayer/UpgradeScreen/MarginContainer/skipbutton" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/PauseMenu/Button" to="CanvasLayer/PauseMenu" method="_on_button_pressed"]

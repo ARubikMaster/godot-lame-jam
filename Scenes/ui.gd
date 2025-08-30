@@ -116,3 +116,9 @@ func _upgraded(price):
 	$CanvasLayer/UpgradeScreen.hide()
 	get_tree().paused = false
 	$"../Camera2D".meters += 2
+
+func pause():
+	print("Ui showing")
+	$CanvasLayer/PauseMenu.paused = true
+	$CanvasLayer/PauseMenu.handle_pausing()
+	

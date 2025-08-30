@@ -4,9 +4,11 @@ extends Node2D
 @export var chest_scene: PackedScene
 
 @onready var music = $Music
-@onready var timer = $"MusicTimer"
+@onready var music_timer = $MusicTimer
+@onready var ui = $UI
 
 var rng = RandomNumberGenerator.new()
+var paused = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -17,8 +19,8 @@ func _ready():
 	
 	rng.randomize()
 	var wait_time = rng.randi_range(60, 70)
-	timer.wait_time = wait_time
-	timer.start()
+	music_timer.wait_time = wait_time
+	music_timer.start()
 
 func _game_over():
 	get_tree().quit() #placeholder
@@ -42,5 +44,19 @@ func _on_music_timer_timeout() -> void:
 	
 	rng.randomize()
 	var wait_time = rng.randi_range(60, 70)
-	timer.wait_time = wait_time
-	timer.start()
+	music_timer.wait_time = wait_time
+	music_timer.start()
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("pause"):
+		paused = !paused
+		
+		if paused:
+			music_timer.process_mode = Node.PROCESS_MODE_DISABLED
+			music.process_mode = Node.PROCESS_MODE_DISABLED
+			print("Game Paused")
+			ui.pause()
+		else:
+			music_timer.process_mode = Node.PROCESS_MODE_ALWAYS
+			music.process_mode = Node.PROCESS_MODE_ALWAYS
+			print("Game unpaused")
