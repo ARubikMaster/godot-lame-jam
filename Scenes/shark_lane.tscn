@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://m4s4nwfxds8h"]
+
+[ext_resource type="Script" path="res://Scenes/shark_lane.gd" id="1_emi05"]
+[ext_resource type="PackedScene" uid="uid://cqwg1bbp7mgfn" path="res://Scenes/shark.tscn" id="2_l68l8"]
+
+[node name="shark_lane" type="Line2D"]
+scale = Vector2(0.995991, 1.00662)
+points = PackedVector2Array(-1000, 0, 1000, 0)
+width = 128.0
+default_color = Color(1, 0, 0, 0.607843)
+script = ExtResource("1_emi05")
+shark_scene = ExtResource("2_l68l8")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

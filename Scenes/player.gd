@@ -11,6 +11,7 @@ var coins: int = 0
 var shield: bool = false
 
 var health = 3
+var invincible: bool = false
 
 var upgrade_levels: Dictionary = {
 	"air capacity": 1,
@@ -39,3 +40,19 @@ func _process(delta):
 	velocity = Input.get_vector("left", "right", "up", "down").normalized() * speed
 	
 	move_and_slide()
+
+func take_damage():
+	health -= 1
+	invincible = true
+	$InvincibleTimer.start()
+	invincible_fx()
+	
+func invincible_fx():
+	for i in range(6):
+		$Sprite2D.material.set_shader_parameter("active", true)
+		await get_tree().create_timer(0.25, false).timeout
+		$Sprite2D.material.set_shader_parameter("active", false)
+		await get_tree().create_timer(0.25, false).timeout
+	
+func _on_invincible_timer_timeout():
+	invincible = false

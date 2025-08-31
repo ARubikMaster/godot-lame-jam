@@ -86,23 +86,30 @@ func apply_upgrade(upgrade_name):
 				"speed":
 					$"../Player".speed += 15
 			
-			_upgraded(price)
+			_upgraded(price, upgrade_name)
 			
 		else:
 			print("Not enough coins") #add error shake animation here
 			
 	elif upgrade_name in powerup_elements:
 		var price = prices[upgrade_name]
+		var upgraded: bool = true
 		
 		if $"../Player".coins >= price:
 			match upgrade_name:
 				"health":
-					pass
+					if $"../Player".health < 3:
+						$"../Player".health += 1
+					
+					else:
+						upgraded = false
+						print("Health full") #add error shake animation here
 				
 				"shield":
 					$"../Player".shield = true
 			
-			_upgraded(price)
+			if upgraded:
+				_upgraded(price, upgrade_name)
 	
 		else:
 			print("Not enough coins") #add error shake animation here
@@ -112,14 +119,17 @@ func apply_upgrade(upgrade_name):
 	
 func _on_button_pressed():
 	#when skip button is pressed:
-	_upgraded(0)
+	_upgraded(0, null)
 
-func _upgraded(price):
+func _upgraded(price, upg_name):
 	#subract item price from player coins
 	can_pause = true
 	$"../Player".coins -= price
 	
 	$"../Music".bus = "Master"
+	
+	if upg_name in upgrade_elements:
+		$"../Player".upgrade_levels[upg_name] += 1
 	
 	#disconnect all previously connected signals
 	for child in $CanvasLayer/UpgradeScreen/MarginContainerButtons/VFlowContainer.get_children():

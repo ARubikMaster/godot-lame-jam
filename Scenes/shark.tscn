@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqwg1bbp7mgfn"]
+
+[ext_resource type="Script" path="res://Scenes/shark.gd" id="1_x0kfr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4bjt2"]
+size = Vector2(256, 128)
+
+[node name="Shark" type="Area2D"]
+script = ExtResource("1_x0kfr")
+speed = 150
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -128.0
+offset_top = -64.0
+offset_right = 128.0
+offset_bottom = 64.0
+color = Color(0, 0.701961, 1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_4bjt2")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

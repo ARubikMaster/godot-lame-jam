@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://ba84fllgwg8ex"]
+[gd_scene load_steps=21 format=3 uid="uid://ba84fllgwg8ex"]
 
 [ext_resource type="Script" path="res://Scenes/Camera2D.gd" id="1_hmxxd"]
 [ext_resource type="Script" path="res://Scenes/level.gd" id="1_lb2nx"]
@@ -8,8 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://d3gxmvn7jx4pl" path="res://Assets/bubble_placeholder.png" id="3_r4h1b"]
 [ext_resource type="PackedScene" uid="uid://cbibuy8r2xa33" path="res://Scenes/coin.tscn" id="4_0vlq5"]
 [ext_resource type="PackedScene" uid="uid://7nodsdgru6nd" path="res://Scenes/ui.tscn" id="4_tkrgx"]
+[ext_resource type="PackedScene" uid="uid://m4s4nwfxds8h" path="res://Scenes/shark_lane.tscn" id="5_aqw7x"]
 [ext_resource type="Script" path="res://Scenes/music.gd" id="7_xgr7q"]
 [ext_resource type="Script" path="res://Scenes/music_timer.gd" id="8_yfgww"]
+[ext_resource type="Script" path="res://Scenes/Marker2D.gd" id="12_j1g0j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fv4aa"]
 size = Vector2(657, 656)
@@ -45,6 +47,7 @@ script = ExtResource("1_lb2nx")
 oxygen_tank_scene = ExtResource("2_jw4fs")
 chest_scene = ExtResource("3_ak236")
 coin_scene = ExtResource("4_0vlq5")
+shark_scene = ExtResource("5_aqw7x")
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("1_hmxxd")
@@ -109,9 +112,13 @@ position = Vector2(0, 324)
 position = Vector2(0, 28)
 shape = SubResource("RectangleShape2D_61xx8")
 
+[node name="Marker2D" type="Marker2D" parent="Camera2D"]
+position = Vector2(584, 64)
+script = ExtResource("12_j1g0j")
+
 [node name="Objects" type="Node2D" parent="."]
 
-[node name="Coin" parent="Objects" instance=ExtResource("4_0vlq5")]
+[node name="Obstacles" type="Node2D" parent="."]
 
 [node name="Player" parent="." instance=ExtResource("1_yu04c")]
 
@@ -123,6 +130,8 @@ shape = SubResource("RectangleShape2D_61xx8")
 
 [node name="TankSpawnTimer" type="Timer" parent="."]
 
+[node name="SharkSpawnTimer" type="Timer" parent="."]
+
 [node name="Music" type="AudioStreamPlayer" parent="."]
 script = ExtResource("7_xgr7q")
 
@@ -133,4 +142,5 @@ script = ExtResource("8_yfgww")
 [connection signal="timeout" from="ChestSpawnTimer" to="." method="_on_chest_spawn_timer_timeout"]
 [connection signal="timeout" from="CoinSpawnTimer" to="." method="_on_coin_spawn_timer_timeout"]
 [connection signal="timeout" from="TankSpawnTimer" to="." method="_on_tank_spawn_timer_timeout"]
+[connection signal="timeout" from="SharkSpawnTimer" to="." method="_on_shark_spawn_timer_timeout"]
 [connection signal="timeout" from="MusicTimer" to="." method="_on_music_timer_timeout"]

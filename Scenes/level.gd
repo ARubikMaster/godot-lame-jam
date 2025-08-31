@@ -3,6 +3,7 @@ extends Node2D
 @export var oxygen_tank_scene: PackedScene
 @export var chest_scene: PackedScene
 @export var coin_scene: PackedScene
+@export var shark_scene: PackedScene
 
 @onready var music = $Music
 @onready var music_timer = $MusicTimer
@@ -19,8 +20,11 @@ func _ready():
 	$ChestSpawnTimer.wait_time = randf_range(10.0, 20.0)
 	$ChestSpawnTimer.start()
 	
-	$CoinSpawnTimer.wait_time = randf_range(2.5, 5.0)
+	$CoinSpawnTimer.wait_time = randf_range(1.0, 2.0)
 	$CoinSpawnTimer.start()
+	
+	$SharkSpawnTimer.wait_time = randf_range(4.0, 8.0)
+	$SharkSpawnTimer.start()
 	
 	music.play_music()
 	
@@ -46,7 +50,7 @@ func _on_chest_spawn_timer_timeout() -> void:
 	$Objects.add_child(new_chest)
 
 func _on_coin_spawn_timer_timeout() -> void:
-	$CoinSpawnTimer.wait_time = randf_range(2.5, 5.0)
+	$CoinSpawnTimer.wait_time = randf_range(1.0, 2.0)
 	
 	var new_coin = coin_scene.instantiate()
 	new_coin.global_position = Vector2(randi_range(-300, 300), ($Camera2D.global_position.y + 160) * 1.75)
@@ -59,3 +63,15 @@ func _on_music_timer_timeout() -> void:
 	var wait_time = rng.randi_range(60, 70)
 	music_timer.wait_time = wait_time
 	music_timer.start()
+
+func _on_shark_spawn_timer_timeout():
+	$SharkSpawnTimer.wait_time = randf_range(4.0, 8.0)
+	
+	var directions: Array = [Vector2.LEFT, Vector2.RIGHT]
+	var new_shark = shark_scene.instantiate()
+	
+	new_shark.direction = directions.pick_random()
+	new_shark.global_position.x = 0
+	new_shark.global_position.y = ($Camera2D.global_position.y + 160) * 1.75
+	
+	$Obstacles.add_child(new_shark)
