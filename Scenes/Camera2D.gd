@@ -23,7 +23,7 @@ func _process(delta):
 		meters = round(global_position.y / 15.0)
 	
 	#check if meters is a multiple of 150
-	if meters % 10 == 0 and not meters == 0 and not last_milestone == meters:
+	if meters % 100 == 0 and not meters == 0 and not last_milestone == meters:
 		$"../UI".upgrade_screen()
 		last_milestone = meters
 	

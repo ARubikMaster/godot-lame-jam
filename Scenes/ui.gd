@@ -137,8 +137,8 @@ func _upgraded(price, upg_name):
 	#disconnect all previously connected signals
 	for child in $CanvasLayer/UpgradeScreen/MarginContainerButtons/VFlowContainer.get_children():
 		child.pressed.disconnect(Callable(self, "apply_upgrade"))
-		child.pressed.disconnect(Callable(self, "_mouse_in"))
-		child.pressed.disconnect(Callable(self, "_mouse_out"))
+		child.mouse_entered.disconnect(Callable(self, "_mouse_in"))
+		child.mouse_exited.disconnect(Callable(self, "_mouse_out"))
 	
 	#hide the screen and continue the gameplay
 	$CanvasLayer/UpgradeScreen.hide()

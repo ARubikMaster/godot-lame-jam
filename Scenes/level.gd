@@ -4,6 +4,7 @@ extends Node2D
 @export var chest_scene: PackedScene
 @export var coin_scene: PackedScene
 @export var shark_scene: PackedScene
+@export var crocodile_scene: PackedScene
 
 @onready var music = $Music
 @onready var music_timer = $MusicTimer

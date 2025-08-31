@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://sh1hoor77f"]
+
+[ext_resource type="Texture2D" uid="uid://bsk8cismd5c2w" path="res://Assets/shark.png" id="1_t5gp0"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hlc7h"]
+radius = 52.0
+height = 260.0
+
+[node name="Crocodile" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+scale = Vector2(8, 8)
+texture = ExtResource("1_t5gp0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4, 6)
+shape = SubResource("CapsuleShape2D_hlc7h")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true

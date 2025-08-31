@@ -1,78 +1,112 @@
-[gd_scene load_steps=8 format=3 uid="uid://b411g1xo5d7xo"]
+[gd_scene load_steps=6 format=3 uid="uid://b411g1xo5d7xo"]
 
 [ext_resource type="Script" path="res://Scenes/menu.gd" id="1_m2aiy"]
 [ext_resource type="FontFile" uid="uid://deusmoy1ctfwm" path="res://Assets/MedodicaRegular.otf" id="2_1ji6h"]
 [ext_resource type="AudioStream" uid="uid://r4ws5fdhn1c1" path="res://Assets/waiting-room.mp3" id="3_3im0h"]
+[ext_resource type="StyleBox" uid="uid://cmsvcweg0bm8b" path="res://menu.tres" id="3_dg22i"]
 [ext_resource type="Texture2D" uid="uid://dlblm2wdatcyb" path="res://Assets/bg.png" id="4_6mxj8"]
-[ext_resource type="Texture2D" uid="uid://bsk8cismd5c2w" path="res://Assets/shark.png" id="5_dqcwx"]
-[ext_resource type="Texture2D" uid="uid://ijtfn8fhgrad" path="res://Assets/turtle.png" id="6_l8lwv"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_aigx3"]
-atlas = ExtResource("6_l8lwv")
-region = Rect2(0, 0, 15.4306, 16)
-
-[node name="Menu" type="Node2D"]
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_m2aiy")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Label" type="Label" parent="CanvasLayer"]
-offset_left = 107.0
-offset_top = 48.0
-offset_right = 691.0
-offset_bottom = 148.0
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(320, 986)
+scale = Vector2(5.15, 5.15)
+texture = ExtResource("4_6mxj8")
+region_enabled = true
+region_rect = Rect2(0, 0, 128, 384)
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -106.0
+offset_right = 100.0
+offset_bottom = 106.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HFlowContainer" type="HFlowContainer" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/v_separation = 16
+
+[node name="Easy" type="Button" parent="CanvasLayer/MarginContainer/HFlowContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_1ji6h")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = ExtResource("3_dg22i")
+theme_override_styles/hover = ExtResource("3_dg22i")
+theme_override_styles/pressed = ExtResource("3_dg22i")
+theme_override_styles/disabled = ExtResource("3_dg22i")
+theme_override_styles/focus = ExtResource("3_dg22i")
+text = "Easy"
+
+[node name="Medium" type="Button" parent="CanvasLayer/MarginContainer/HFlowContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_1ji6h")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = ExtResource("3_dg22i")
+theme_override_styles/hover = ExtResource("3_dg22i")
+theme_override_styles/pressed = ExtResource("3_dg22i")
+theme_override_styles/disabled = ExtResource("3_dg22i")
+theme_override_styles/focus = ExtResource("3_dg22i")
+text = "Medium"
+
+[node name="Hard" type="Button" parent="CanvasLayer/MarginContainer/HFlowContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_1ji6h")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = ExtResource("3_dg22i")
+theme_override_styles/hover = ExtResource("3_dg22i")
+theme_override_styles/pressed = ExtResource("3_dg22i")
+theme_override_styles/disabled = ExtResource("3_dg22i")
+theme_override_styles/focus = ExtResource("3_dg22i")
+text = "Hard"
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -232.5
+offset_right = 232.5
+offset_bottom = 80.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 96
+
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer2"]
+layout_mode = 2
 theme_override_fonts/font = ExtResource("2_1ji6h")
 theme_override_font_sizes/font_size = 80
 text = "Infinity Trench"
 
-[node name="Buttons" type="CanvasGroup" parent="CanvasLayer"]
-
-[node name="Easy" type="Button" parent="CanvasLayer/Buttons"]
-offset_left = 186.0
-offset_top = 191.0
-offset_right = 466.0
-offset_bottom = 284.0
-theme_override_fonts/font = ExtResource("2_1ji6h")
-theme_override_font_sizes/font_size = 60
-text = "Play"
-
-[node name="Medium" type="Button" parent="CanvasLayer/Buttons"]
-visible = false
-offset_left = 186.0
-offset_top = 295.0
-offset_right = 466.0
-offset_bottom = 388.0
-theme_override_fonts/font = ExtResource("2_1ji6h")
-theme_override_font_sizes/font_size = 60
-text = "Medium"
-
-[node name="Hard" type="Button" parent="CanvasLayer/Buttons"]
-visible = false
-offset_left = 186.0
-offset_top = 398.0
-offset_right = 466.0
-offset_bottom = 491.0
-theme_override_fonts/font = ExtResource("2_1ji6h")
-theme_override_font_sizes/font_size = 60
-text = "Hard"
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_3im0h")
 autoplay = true
-
-[node name="Bg" type="Sprite2D" parent="."]
-position = Vector2(324.25, 815.25)
-scale = Vector2(5.01172, 5.01172)
-texture = ExtResource("4_6mxj8")
-
-[node name="Shark" type="Sprite2D" parent="."]
-position = Vector2(536, 442)
-rotation = 0.199765
-scale = Vector2(10.1875, 10.1875)
-texture = ExtResource("5_dqcwx")
-
-[node name="Turtle" type="Sprite2D" parent="."]
-position = Vector2(196, 386)
-rotation = -0.484397
-scale = Vector2(5.99427, 5.99427)
-texture = SubResource("AtlasTexture_aigx3")
