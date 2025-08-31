@@ -34,6 +34,7 @@ func _ready():
 
 func _reset():
 	$Player.health = 3
+	GlobalScript.GameOver = false
 	
 	rng = RandomNumberGenerator.new()
 	paused = false

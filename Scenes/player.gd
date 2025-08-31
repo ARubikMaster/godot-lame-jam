@@ -21,12 +21,11 @@ var upgrade_levels: Dictionary = {
 	#"luck": 1 (if more chest reward types are gonna be added)
 	}
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if GlobalScript.GameOver == true:
+		return
+		
 	$shield_placeholder.visible = shield
 	
 	#decrease air left

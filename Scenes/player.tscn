@@ -71,6 +71,6 @@ position = Vector2(5.96046e-08, 1.43051e-06)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_t4i5p")
 autoplay = "default"
-frame_progress = 0.44706
+frame_progress = 0.0335176
 
 [connection signal="timeout" from="InvincibleTimer" to="." method="_on_invincible_timer_timeout"]
