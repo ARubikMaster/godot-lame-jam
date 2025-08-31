@@ -12,7 +12,8 @@ shark_scene = ExtResource("2_l68l8")
 autostart = true
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-position = Vector2(-1.13687e-13, 135.106)
+position = Vector2(1.90735e-06, 0)
+scale = Vector2(6.42576, 6.35791)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

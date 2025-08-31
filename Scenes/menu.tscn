@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://20w4pl4q1nq7"]
+[gd_scene load_steps=4 format=3 uid="uid://20w4pl4q1nq7"]
 
 [ext_resource type="Script" path="res://Scenes/menu.gd" id="1_m2aiy"]
 [ext_resource type="PackedScene" uid="uid://ba84fllgwg8ex" path="res://Scenes/level.tscn" id="2_y18ag"]
+[ext_resource type="AudioStream" uid="uid://r4ws5fdhn1c1" path="res://Assets/waiting-room.mp3" id="3_wy3y1"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -81,3 +82,7 @@ theme_override_constants/margin_bottom = 32
 [node name="ExtraText" type="Label" parent="CanvasLayer/MarginContainer3"]
 layout_mode = 2
 text = "Lorem ipsum dolor sit amet"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_wy3y1")
+autoplay = true

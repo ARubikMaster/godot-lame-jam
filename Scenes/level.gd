@@ -23,7 +23,7 @@ func _ready():
 	$CoinSpawnTimer.wait_time = randf_range(1.0, 2.0)
 	$CoinSpawnTimer.start()
 	
-	$SharkSpawnTimer.wait_time = randf_range(2.0, 4.0)
+	$SharkSpawnTimer.wait_time = randf_range(3.5, 6.0)
 	$SharkSpawnTimer.start()
 	
 	music.play_music()
@@ -65,7 +65,7 @@ func _on_music_timer_timeout() -> void:
 	music_timer.start()
 
 func _on_shark_spawn_timer_timeout():
-	$SharkSpawnTimer.wait_time = randf_range(2.0, 4.0)
+	$SharkSpawnTimer.wait_time = randf_range(3.5, 6.0)
 	
 	var directions: Array = [Vector2.LEFT, Vector2.RIGHT]
 	var new_shark = shark_scene.instantiate()

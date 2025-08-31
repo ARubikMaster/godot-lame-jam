@@ -17,7 +17,8 @@ func _on_timer_timeout():
 	var new_shark = shark_scene.instantiate()
 	new_shark.direction = direction
 	new_shark.global_position.x = (direction.x * 512) * -1
-	new_shark.global_position.y = global_position.y
+	new_shark.global_position.y = 0
+	
 	add_child(new_shark)
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
