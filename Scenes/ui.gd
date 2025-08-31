@@ -16,7 +16,6 @@ var prices: Dictionary = {
 	}
 @export var heart_full: Texture2D
 @export var heart_empty: Texture2D
-@onready var menu = preload("res://Scenes/menu.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -149,6 +148,5 @@ func _on_resume_button_pressed():
 	_pause()
 
 func _on_back_to_menu_pressed():
-	print("menu valid?: ", menu, " root: ", menu.get_state().get_node_count())
-
-	get_tree().change_scene_to_packed(menu)
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://Scenes/menu.tscn")
