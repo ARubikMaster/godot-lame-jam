@@ -32,6 +32,14 @@ func _ready():
 	music_timer.wait_time = wait_time
 	music_timer.start()
 
+func _reset():
+	$Player.health = 3
+	
+	rng = RandomNumberGenerator.new()
+	paused = false
+	
+	_ready()
+
 func _game_over():
 	var depth = $Camera2D.meters
 	ui._game_over(depth)
