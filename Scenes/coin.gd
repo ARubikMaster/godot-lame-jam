@@ -18,5 +18,5 @@ func _on_coin_body_entered(body):
 		var particle = particle_scene.instantiate()
 		particle.global_position = global_position
 		get_parent().add_child(particle)
-		
+		get_parent().get_parent()._play_sfx()
 		queue_free()

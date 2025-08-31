@@ -14,6 +14,8 @@ var paused = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	GlobalScript.GameOver = false
+	
 	$TankSpawnTimer.wait_time = randf_range(3.0, 6.0)
 	$TankSpawnTimer.start()
 
@@ -31,15 +33,6 @@ func _ready():
 	var wait_time = rng.randi_range(60, 70)
 	music_timer.wait_time = wait_time
 	music_timer.start()
-
-func _reset():
-	$Player.health = 3
-	GlobalScript.GameOver = false
-	
-	rng = RandomNumberGenerator.new()
-	paused = false
-	
-	_ready()
 
 func _game_over():
 	var depth = $Camera2D.meters
@@ -85,3 +78,6 @@ func _on_shark_spawn_timer_timeout():
 	new_shark.global_position.y = ($Camera2D.global_position.y + 160) * 1.75
 	
 	$Obstacles.add_child(new_shark)
+
+func _play_sfx():
+	$CoinSFX.play()

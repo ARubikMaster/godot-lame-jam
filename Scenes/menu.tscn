@@ -1,8 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://b411g1xo5d7xo"]
+[gd_scene load_steps=8 format=3 uid="uid://b411g1xo5d7xo"]
 
 [ext_resource type="Script" path="res://Scenes/menu.gd" id="1_m2aiy"]
 [ext_resource type="FontFile" uid="uid://deusmoy1ctfwm" path="res://Assets/MedodicaRegular.otf" id="2_1ji6h"]
 [ext_resource type="AudioStream" uid="uid://r4ws5fdhn1c1" path="res://Assets/waiting-room.mp3" id="3_3im0h"]
+[ext_resource type="Texture2D" uid="uid://dlblm2wdatcyb" path="res://Assets/bg.png" id="4_6mxj8"]
+[ext_resource type="Texture2D" uid="uid://bsk8cismd5c2w" path="res://Assets/shark.png" id="5_dqcwx"]
+[ext_resource type="Texture2D" uid="uid://ijtfn8fhgrad" path="res://Assets/turtle.png" id="6_l8lwv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aigx3"]
+atlas = ExtResource("6_l8lwv")
+region = Rect2(0, 0, 15.4306, 16)
 
 [node name="Menu" type="Node2D"]
 script = ExtResource("1_m2aiy")
@@ -10,13 +17,13 @@ script = ExtResource("1_m2aiy")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Label" type="Label" parent="CanvasLayer"]
-offset_left = 45.0
-offset_top = 89.0
-offset_right = 623.0
-offset_bottom = 189.0
+offset_left = 107.0
+offset_top = 48.0
+offset_right = 691.0
+offset_bottom = 148.0
 theme_override_fonts/font = ExtResource("2_1ji6h")
-theme_override_font_sizes/font_size = 100
-text = "Mariana Trench"
+theme_override_font_sizes/font_size = 80
+text = "Infinity Trench"
 
 [node name="Buttons" type="CanvasGroup" parent="CanvasLayer"]
 
@@ -52,3 +59,20 @@ text = "Hard"
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_3im0h")
 autoplay = true
+
+[node name="Bg" type="Sprite2D" parent="."]
+position = Vector2(324.25, 815.25)
+scale = Vector2(5.01172, 5.01172)
+texture = ExtResource("4_6mxj8")
+
+[node name="Shark" type="Sprite2D" parent="."]
+position = Vector2(536, 442)
+rotation = 0.199765
+scale = Vector2(10.1875, 10.1875)
+texture = ExtResource("5_dqcwx")
+
+[node name="Turtle" type="Sprite2D" parent="."]
+position = Vector2(196, 386)
+rotation = -0.484397
+scale = Vector2(5.99427, 5.99427)
+texture = SubResource("AtlasTexture_aigx3")

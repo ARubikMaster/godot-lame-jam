@@ -19,6 +19,7 @@ func _on_body_entered(body):
 	if not opened and body.is_in_group("player"):
 		print("Chest opened")
 		opened = true
+		get_parent().get_parent()._play_sfx()
 		$Sprite2D.texture = opened_texture
 		
 		var reward_type = reward_types.pick_random()

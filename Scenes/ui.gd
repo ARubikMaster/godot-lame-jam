@@ -152,9 +152,7 @@ func _on_back_to_menu_pressed():
 	get_tree().change_scene_to_file("res://Scenes/menu.tscn")
 
 func _game_over(depth):
-	can_pause = false
-	get_parent()._reset()
-	#get_tree().paused = true
+	can_pause = false 
 	GlobalScript.GameOver = true
 	if $"../Music":
 		$"../Music".stop()
