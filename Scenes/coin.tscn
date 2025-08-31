@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/coin.gd" id="1_30jp3"]
 [ext_resource type="Texture2D" uid="uid://b4166rslt63w4" path="res://Assets/coin.png" id="1_mnv2y"]
-[ext_resource type="PackedScene" uid="uid://61xk46atcqr8" path="res://Scenes/coin_particle.tscn" id="2_poe80"]
+[ext_resource type="PackedScene" path="res://Scenes/coin_particle.tscn" id="2_poe80"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0rjyh"]
 radius = 25.0
