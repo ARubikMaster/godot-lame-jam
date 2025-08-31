@@ -31,8 +31,6 @@ func _ready():
 	var wait_time = rng.randi_range(60, 70)
 	music_timer.wait_time = wait_time
 	music_timer.start()
-	
-	$UI.connect("back_to_menu_requested", Callable(self, "_return_to_menu"))
 
 func _game_over():
 	get_tree().quit() #placeholder
@@ -77,6 +75,3 @@ func _on_shark_spawn_timer_timeout():
 	new_shark.global_position.y = ($Camera2D.global_position.y + 160) * 1.75
 	
 	$Obstacles.add_child(new_shark)
-
-func _return_to_menu():
-	get_tree().change_scene_to_file("res://Scenes/menu_2.tscn")
