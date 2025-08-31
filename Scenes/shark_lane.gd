@@ -18,4 +18,7 @@ func _on_timer_timeout():
 	new_shark.direction = direction
 	new_shark.global_position.x = (direction.x * 512) * -1
 	new_shark.global_position.y = global_position.y
-	get_parent().add_child(new_shark)
+	add_child(new_shark)
+
+func _on_visible_on_screen_notifier_2d_screen_exited():
+	queue_free()
