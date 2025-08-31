@@ -1,12 +1,27 @@
-[gd_scene load_steps=3 format=3 uid="uid://b784y6rjbd1re"]
+[gd_scene load_steps=5 format=3 uid="uid://b784y6rjbd1re"]
 
 [ext_resource type="Script" path="res://Scenes/oxygen_tank.gd" id="1_kov26"]
+[ext_resource type="Texture2D" uid="uid://1tk3nveybyr2" path="res://Assets/bubble.png" id="2_yurg3"]
+
+[sub_resource type="Curve" id="Curve_faxdo"]
+max_value = 2.0
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.24, 1.12088), 0.0, 0.0, 0, 0, Vector2(0.8, 1.78022), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4gfku"]
 size = Vector2(48, 48)
 
 [node name="oxygen_tank" type="Area2D"]
 script = ExtResource("1_kov26")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+lifetime = 1.25
+texture = ExtResource("2_yurg3")
+emission_shape = 3
+emission_rect_extents = Vector2(20, 1)
+gravity = Vector2(0, -300)
+scale_amount_min = 0.5
+scale_amount_curve = SubResource("Curve_faxdo")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -24.0

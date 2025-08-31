@@ -51,6 +51,8 @@ func upgrade_screen():
 	can_pause = false
 	$CanvasLayer/UpgradeScreen.show()
 	
+	$"../Music".bus = "Muffled"
+	
 	#merge upgrades and powerups array
 	var all_elements: Array = upgrade_elements + powerup_elements
 	
@@ -116,6 +118,8 @@ func _upgraded(price):
 	#subract item price from player coins
 	can_pause = true
 	$"../Player".coins -= price
+	
+	$"../Music".bus = "Master"
 	
 	#disconnect all previously connected signals
 	for child in $CanvasLayer/UpgradeScreen/MarginContainerButtons/VFlowContainer.get_children():

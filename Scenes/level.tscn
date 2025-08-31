@@ -111,6 +111,8 @@ shape = SubResource("RectangleShape2D_61xx8")
 
 [node name="Objects" type="Node2D" parent="."]
 
+[node name="Coin" parent="Objects" instance=ExtResource("4_0vlq5")]
+
 [node name="Player" parent="." instance=ExtResource("1_yu04c")]
 
 [node name="UI" parent="." instance=ExtResource("4_tkrgx")]

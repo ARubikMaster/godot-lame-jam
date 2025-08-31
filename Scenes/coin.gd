@@ -1,8 +1,13 @@
-extends Area2D
+extends CharacterBody2D
 
 @export var particle_scene: PackedScene
 
-func _on_body_entered(body):
+func _process(delta):
+	var direction = global_position.direction_to($"../../Player".global_position)
+	velocity = direction * (15 * ($"../../Player".upgrade_levels["magnet"] - 1))
+	move_and_slide()
+
+func _on_coin_body_entered(body):
 	print("Body entered")
 	if body.is_in_group("player"):
 		print("Chest opened")
