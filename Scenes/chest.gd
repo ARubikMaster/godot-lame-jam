@@ -8,6 +8,7 @@ var reward_types: Array = ["coins"] #incase there could be more
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	print("Chest spawned")
 	$Sprite2D.texture = closed_texture
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -23,4 +24,9 @@ func _on_body_entered(body):
 		var reward_type = reward_types.pick_random()
 		match  reward_type:
 			"coins":
-				body.coins += snapped(randi_range(10, 30), 5)
+				var gain = snapped(randi_range(20, 40), 5)
+				var multiplier = (1 + (0.15 * (body.upgrade_levels["reward gain"] - 1)))
+				
+				$CPUParticles2D.color = Color.YELLOW
+				$CPUParticles2D.emitting = true
+				body.coins += gain * multiplier

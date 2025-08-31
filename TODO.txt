@@ -1,8 +1,5 @@
-1 - change ColorRects to sprites with textures
-2 - make reward gain and magnet upgrades work
-3 - add menu and pausing
-4 - add game over screen
+1 - change ColorRects and placeholder sprites to sprites with finished textures
+3 - make reward gain upgrade work after implementing chests
+4 - add game over and pausing screen
 5 - add polish, effects, animations, particles etc.
-6 - add 3 difficulty modes
-7 - add obstacles (sharks, rocks, spikes etc.)
-8 - add health system
+6 - add obstacles (sharks, rocks, spikes etc.)

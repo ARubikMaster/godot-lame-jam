@@ -23,7 +23,7 @@ offset_left = -48.0
 offset_right = 48.0
 offset_bottom = 40.0
 grow_horizontal = 2
-theme_override_constants/margin_top = 80
+theme_override_constants/margin_top = 112
 
 [node name="Title" type="Label" parent="CanvasLayer/MarginContainer"]
 layout_mode = 2
@@ -50,19 +50,19 @@ theme_override_constants/v_separation = 16
 [node name="EasyButton" type="Button" parent="CanvasLayer/MarginContainer2/HFlowContainer"]
 custom_minimum_size = Vector2(320, 64)
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 28
 text = "Easy"
 
 [node name="MediumButton" type="Button" parent="CanvasLayer/MarginContainer2/HFlowContainer"]
 custom_minimum_size = Vector2(320, 64)
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 28
 text = "Normal"
 
 [node name="HardButton" type="Button" parent="CanvasLayer/MarginContainer2/HFlowContainer"]
 custom_minimum_size = Vector2(320, 64)
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 28
 text = "Hard"
 
 [node name="MarginContainer3" type="MarginContainer" parent="CanvasLayer"]

@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://61xk46atcqr8"]
+
+[ext_resource type="Texture2D" uid="uid://d3gxmvn7jx4pl" path="res://Assets/bubble_placeholder.png" id="1_qvsdl"]
+[ext_resource type="Script" path="res://Scenes/coin_particle.gd" id="2_cp274"]
+
+[sub_resource type="Gradient" id="Gradient_54n87"]
+offsets = PackedFloat32Array(0, 0.190476, 0.85034, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="CoinParticle" type="CPUParticles2D"]
+emitting = false
+amount = 5
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("1_qvsdl")
+emission_shape = 3
+emission_rect_extents = Vector2(8, 0)
+direction = Vector2(0, -1)
+gravity = Vector2(0, 500)
+initial_velocity_min = 100.0
+initial_velocity_max = 200.0
+scale_amount_min = 0.3
+scale_amount_max = 0.8
+color = Color(1, 1, 0, 1)
+color_ramp = SubResource("Gradient_54n87")
+script = ExtResource("2_cp274")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

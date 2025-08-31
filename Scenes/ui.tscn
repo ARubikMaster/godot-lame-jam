@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scenes/ui.gd" id="1_wg176"]
 [ext_resource type="Texture2D" uid="uid://cdiq2xm0g2my4" path="res://Assets/heart_full.png" id="2_od42e"]
 [ext_resource type="Texture2D" uid="uid://4n1ycpv03a0c" path="res://Assets/heart_empty.png" id="3_su6do"]
-[ext_resource type="Texture2D" uid="uid://bn2h18wpupjfv" path="res://Assets/coin.png" id="4_vnd5n"]
+[ext_resource type="Texture2D" uid="uid://cbt6imlm2cqi5" path="res://Assets/coin_def.png" id="4_uwu2c"]
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -71,14 +71,14 @@ theme_override_constants/margin_right = 16
 
 [node name="CoinLabel" type="Label" parent="CanvasLayer/MarginContainerCoinLabel"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 42
-text = "100"
+theme_override_font_sizes/font_size = 64
+text = "0"
 vertical_alignment = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/MarginContainerCoinLabel/CoinLabel"]
-position = Vector2(-24, 32)
+position = Vector2(-32, 32)
 scale = Vector2(4.5, 4.5)
-texture = ExtResource("4_vnd5n")
+texture = ExtResource("4_uwu2c")
 
 [node name="MarginContainerHealth" type="MarginContainer" parent="CanvasLayer"]
 anchors_preset = 2
@@ -136,16 +136,19 @@ theme_override_constants/h_separation = 16
 [node name="option1" type="Button" parent="CanvasLayer/UpgradeScreen/MarginContainerButtons/VFlowContainer"]
 custom_minimum_size = Vector2(128, 256)
 layout_mode = 2
+theme_override_font_sizes/font_size = 28
 text = "option 1"
 
 [node name="option2" type="Button" parent="CanvasLayer/UpgradeScreen/MarginContainerButtons/VFlowContainer"]
 custom_minimum_size = Vector2(128, 256)
 layout_mode = 2
+theme_override_font_sizes/font_size = 28
 text = "option 2"
 
 [node name="option3" type="Button" parent="CanvasLayer/UpgradeScreen/MarginContainerButtons/VFlowContainer"]
 custom_minimum_size = Vector2(128, 256)
 layout_mode = 2
+theme_override_font_sizes/font_size = 28
 text = "option 3"
 
 [node name="MarginContainerLabel" type="MarginContainer" parent="CanvasLayer/UpgradeScreen"]
@@ -161,8 +164,10 @@ theme_override_constants/margin_top = 112
 
 [node name="Label" type="Label" parent="CanvasLayer/UpgradeScreen/MarginContainerLabel"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 36
+theme_override_font_sizes/font_size = 48
 text = "Choose an Upgrade!"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/UpgradeScreen"]
 custom_minimum_size = Vector2(256, 48)
@@ -199,13 +204,14 @@ offset_left = -131.5
 offset_right = 131.5
 offset_bottom = 55.0
 grow_horizontal = 2
-theme_override_constants/margin_top = 192
+theme_override_constants/margin_top = 176
 
 [node name="Label" type="Label" parent="CanvasLayer/PauseMenu/MarginContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 64
 text = "Paused"
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/PauseMenu"]
 layout_mode = 1
@@ -226,14 +232,14 @@ theme_override_constants/v_separation = 24
 custom_minimum_size = Vector2(256, 48)
 layout_mode = 2
 mouse_default_cursor_shape = 2
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 28
 text = "Resume"
 
 [node name="BackToMenu" type="Button" parent="CanvasLayer/PauseMenu/MarginContainer2/HFlowContainer"]
 custom_minimum_size = Vector2(256, 48)
 layout_mode = 2
 mouse_default_cursor_shape = 2
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 28
 text = "Back To Menu"
 
 [node name="Marker2D" type="Marker2D" parent="."]
