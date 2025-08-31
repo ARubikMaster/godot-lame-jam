@@ -48,6 +48,7 @@ layout_mode = 2
 theme_override_styles/background = SubResource("StyleBoxTexture_vomyl")
 theme_override_styles/fill = SubResource("StyleBoxTexture_342bc")
 max_value = 120.0
+value = 50.0
 show_percentage = false
 
 [node name="Label" type="Label" parent="CanvasLayer/MarginContainerProgress/ProgressBar"]

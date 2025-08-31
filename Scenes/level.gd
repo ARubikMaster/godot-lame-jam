@@ -26,8 +26,11 @@ func _ready():
 	$CoinSpawnTimer.wait_time = randf_range(1.0, 2.0)
 	$CoinSpawnTimer.start()
 	
-	$SharkSpawnTimer.wait_time = randf_range(3.5, 6.0)
+	$SharkSpawnTimer.wait_time = randf_range(4.0, 7.0)
 	$SharkSpawnTimer.start()
+	
+	$CrocodileSpawnTimer.wait_time = randf_range(5.0, 8.0)
+	$CrocodileSpawnTimer.start()
 	
 	music.play_music()
 	
@@ -69,7 +72,7 @@ func _on_music_timer_timeout() -> void:
 	music_timer.start()
 
 func _on_shark_spawn_timer_timeout():
-	$SharkSpawnTimer.wait_time = randf_range(3.5, 6.0)
+	$SharkSpawnTimer.wait_time = randf_range(4.0, 7.0)
 	
 	var directions: Array = [Vector2.LEFT, Vector2.RIGHT]
 	var new_shark = shark_scene.instantiate()
@@ -82,3 +85,26 @@ func _on_shark_spawn_timer_timeout():
 
 func _play_sfx():
 	$CoinSFX.play()
+
+func _on_crocodile_spawn_timer_timeout():
+	$CrocodileSpawnTimer.wait_time = randf_range(5.0, 8.0)
+	
+	warning()
+
+func warning():
+	$Camera2D/warning.position = Vector2(randi_range(-226, 226), 184)
+	$Camera2D/warning.show()
+	
+	for i in range(4):
+		$Camera2D/warning.modulate = Color.WHITE
+		await get_tree().create_timer(0.1, false).timeout
+		$Camera2D/warning.modulate = Color.YELLOW
+		await get_tree().create_timer(0.1, false).timeout
+		$Camera2D/warning.modulate = Color.RED
+		await get_tree().create_timer(0.1, false).timeout
+	
+	var new_croc = crocodile_scene.instantiate()
+	new_croc.global_position = Vector2($Camera2D/warning.global_position.x, $Camera2D/warning.global_position.y + 350)
+	$Obstacles.add_child(new_croc)
+	
+	$Camera2D/warning.hide()

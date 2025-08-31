@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://ba84fllgwg8ex"]
+[gd_scene load_steps=23 format=3 uid="uid://ba84fllgwg8ex"]
 
 [ext_resource type="Script" path="res://Scenes/Camera2D.gd" id="1_hmxxd"]
 [ext_resource type="Script" path="res://Scenes/level.gd" id="1_lb2nx"]
@@ -9,9 +9,11 @@
 [ext_resource type="PackedScene" uid="uid://cbibuy8r2xa33" path="res://Scenes/coin.tscn" id="4_0vlq5"]
 [ext_resource type="PackedScene" uid="uid://7nodsdgru6nd" path="res://Scenes/ui.tscn" id="4_tkrgx"]
 [ext_resource type="PackedScene" uid="uid://m4s4nwfxds8h" path="res://Scenes/shark_lane.tscn" id="5_aqw7x"]
+[ext_resource type="PackedScene" uid="uid://sh1hoor77f" path="res://Scenes/crocodile.tscn" id="6_ja86b"]
 [ext_resource type="Script" path="res://Scenes/music.gd" id="7_xgr7q"]
 [ext_resource type="Script" path="res://Scenes/music_timer.gd" id="8_yfgww"]
 [ext_resource type="Texture2D" uid="uid://dlblm2wdatcyb" path="res://Assets/bg.png" id="9_m3kdv"]
+[ext_resource type="Texture2D" uid="uid://o67ffxrj2f10" path="res://Assets/warning.png" id="11_l1gyy"]
 [ext_resource type="Script" path="res://Scenes/Marker2D.gd" id="12_j1g0j"]
 [ext_resource type="AudioStream" uid="uid://co2o6670dnqq3" path="res://Assets/coin.wav" id="13_bxs7y"]
 
@@ -42,6 +44,7 @@ oxygen_tank_scene = ExtResource("2_jw4fs")
 chest_scene = ExtResource("3_ak236")
 coin_scene = ExtResource("4_0vlq5")
 shark_scene = ExtResource("5_aqw7x")
+crocodile_scene = ExtResource("6_ja86b")
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("1_hmxxd")
@@ -110,6 +113,12 @@ texture = ExtResource("9_m3kdv")
 region_enabled = true
 region_rect = Rect2(0, 0, 128, 384)
 
+[node name="warning" type="Sprite2D" parent="Camera2D"]
+visible = false
+position = Vector2(208, 160)
+scale = Vector2(4, 4)
+texture = ExtResource("11_l1gyy")
+
 [node name="Objects" type="Node2D" parent="."]
 
 [node name="Obstacles" type="Node2D" parent="."]
@@ -126,6 +135,8 @@ region_rect = Rect2(0, 0, 128, 384)
 
 [node name="SharkSpawnTimer" type="Timer" parent="."]
 
+[node name="CrocodileSpawnTimer" type="Timer" parent="."]
+
 [node name="Music" type="AudioStreamPlayer" parent="."]
 script = ExtResource("7_xgr7q")
 
@@ -141,4 +152,6 @@ max_polyphony = 5
 [connection signal="timeout" from="CoinSpawnTimer" to="." method="_on_coin_spawn_timer_timeout"]
 [connection signal="timeout" from="TankSpawnTimer" to="." method="_on_tank_spawn_timer_timeout"]
 [connection signal="timeout" from="SharkSpawnTimer" to="." method="_on_shark_spawn_timer_timeout"]
+[connection signal="timeout" from="CrocodileSpawnTimer" to="." method="_on_shark_spawn_timer_timeout"]
+[connection signal="timeout" from="CrocodileSpawnTimer" to="." method="_on_crocodile_spawn_timer_timeout"]
 [connection signal="timeout" from="MusicTimer" to="." method="_on_music_timer_timeout"]
