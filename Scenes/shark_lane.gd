@@ -1,4 +1,4 @@
-extends Line2D
+extends Node2D
 
 @export var shark_scene: PackedScene
 var direction: Vector2
