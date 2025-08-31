@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://b411g1xo5d7xo"]
+[gd_scene load_steps=4 format=3 uid="uid://b411g1xo5d7xo"]
 
 [ext_resource type="Script" path="res://Scenes/menu.gd" id="1_m2aiy"]
 [ext_resource type="FontFile" uid="uid://deusmoy1ctfwm" path="res://Assets/MedodicaRegular.otf" id="2_1ji6h"]
+[ext_resource type="AudioStream" uid="uid://r4ws5fdhn1c1" path="res://Assets/waiting-room.mp3" id="3_3im0h"]
 
 [node name="Menu" type="Node2D"]
 script = ExtResource("1_m2aiy")
@@ -45,3 +46,7 @@ offset_bottom = 491.0
 theme_override_fonts/font = ExtResource("2_1ji6h")
 theme_override_font_sizes/font_size = 60
 text = "Hard"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_3im0h")
+autoplay = true
