@@ -242,6 +242,75 @@ mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 28
 text = "Back To Menu"
 
+[node name="GameOver" type="ColorRect" parent="CanvasLayer"]
+process_mode = 3
+visible = false
+offset_right = 648.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 0.392157)
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/GameOver"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -174.0
+offset_top = 15.0
+offset_right = 174.0
+offset_bottom = 279.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 176
+
+[node name="Label" type="Label" parent="CanvasLayer/GameOver/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer3" type="MarginContainer" parent="CanvasLayer/GameOver"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -174.0
+offset_top = 86.0
+offset_right = 174.0
+offset_bottom = 350.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 176
+
+[node name="Label" type="Label" parent="CanvasLayer/GameOver/MarginContainer3"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Depth: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/GameOver"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -131.5
+offset_top = 85.0
+offset_right = 131.5
+offset_bottom = 405.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 272
+
+[node name="HFlowContainer" type="HFlowContainer" parent="CanvasLayer/GameOver/MarginContainer2"]
+layout_mode = 2
+theme_override_constants/v_separation = 24
+
+[node name="PlayAgain" type="Button" parent="CanvasLayer/GameOver/MarginContainer2/HFlowContainer"]
+custom_minimum_size = Vector2(256, 48)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 28
+text = "Play Again"
+
 [connection signal="pressed" from="CanvasLayer/UpgradeScreen/MarginContainer/skipbutton" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/PauseMenu/MarginContainer2/HFlowContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/PauseMenu/MarginContainer2/HFlowContainer/BackToMenu" to="." method="_on_back_to_menu_pressed"]
+[connection signal="pressed" from="CanvasLayer/GameOver/MarginContainer2/HFlowContainer/PlayAgain" to="." method="_on_play_again_pressed"]

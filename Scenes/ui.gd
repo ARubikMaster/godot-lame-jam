@@ -151,3 +151,13 @@ func _on_back_to_menu_pressed():
 	_pause()
 	get_tree().change_scene_to_file("res://Scenes/menu_2.tscn")
 
+func _game_over(depth):
+	_pause()
+	$CanvasLayer/PauseMenu.visible = false
+	$CanvasLayer/GameOver.visible = true
+	
+	$CanvasLayer/GameOver/MarginContainer3/Label.text = "Depth: " + str(depth)
+
+
+func _on_play_again_pressed():
+	get_tree().change_scene_to_file("res://Scenes/level.tscn")

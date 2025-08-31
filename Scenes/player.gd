@@ -42,6 +42,10 @@ func _process(delta):
 	move_and_slide()
 
 func take_damage():
+	if health == 1:
+		get_parent().get_node("UI")._game_over(get_parent().get_node("Camera2D").meters)
+		return
+	
 	health -= 1
 	invincible = true
 	$InvincibleTimer.start()

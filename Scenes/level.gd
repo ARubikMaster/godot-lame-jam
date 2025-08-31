@@ -33,7 +33,8 @@ func _ready():
 	music_timer.start()
 
 func _game_over():
-	get_tree().quit() #placeholder
+	var depth = $Camera2D.meters
+	ui._game_over(depth)
 
 func _on_tank_spawn_timer_timeout():
 	$TankSpawnTimer.wait_time = randf_range(3.0, 6.0)
