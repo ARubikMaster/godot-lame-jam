@@ -49,9 +49,9 @@ func take_damage():
 	
 func invincible_fx():
 	for i in range(6):
-		$Sprite2D.material.set_shader_parameter("active", true)
+		$AnimatedSprite2D.material.set_shader_parameter("active", true)
 		await get_tree().create_timer(0.25, false).timeout
-		$Sprite2D.material.set_shader_parameter("active", false)
+		$AnimatedSprite2D.material.set_shader_parameter("active", false)
 		await get_tree().create_timer(0.25, false).timeout
 	
 func _on_invincible_timer_timeout():

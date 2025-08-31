@@ -1,5 +1,4 @@
-1 - change ColorRects and placeholder sprites to sprites with finished textures
 3 - make reward gain upgrade work after implementing chests
-4 - add game over and pausing screen
+4 - add game over
 5 - add polish, effects, animations, particles etc.
 6 - add obstacles (sharks, rocks, spikes etc.)
