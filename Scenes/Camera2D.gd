@@ -14,6 +14,8 @@ func _ready():
 func _process(delta):
 	#move gameplay area down
 	global_position.y += 50 * delta
+	$Sprite2D.region_rect.position.y += 10 * delta
+	
 	if !GlobalScript.GameOver: 
 		meters = round(global_position.y / 15.0)
 	
@@ -25,7 +27,7 @@ func _process(delta):
 	#adjust vignette effect and background color based on gameplay area depth
 	$PointLight2D.energy = remap(global_position.y / 100.0, 0, 450, 0.2, 0.9)
 	bg_color_modulate = remap(global_position.y / 100.0, 0, 450, 1, 0.2)
-	$bg_placeholder.modulate = Color(bg_color_modulate, bg_color_modulate, bg_color_modulate, 1)
+	$Sprite2D.modulate = Color(bg_color_modulate, bg_color_modulate, bg_color_modulate, 1)
 	
 func _on_gameplay_area_body_exited(body):
 	if body == player:
