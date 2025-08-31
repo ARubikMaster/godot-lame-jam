@@ -147,6 +147,8 @@ func _pause():
 func _on_resume_button_pressed():
 	_pause()
 
+signal back_to_menu_requested
+
 func _on_back_to_menu_pressed():
-	get_tree().paused = false
-	get_tree().change_scene_to_file("res://Scenes/menu.tscn")
+	emit_signal("back_to_menu_requested")
+

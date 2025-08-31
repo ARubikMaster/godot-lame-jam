@@ -1,88 +1,47 @@
-[gd_scene load_steps=4 format=3 uid="uid://20w4pl4q1nq7"]
+[gd_scene load_steps=3 format=3 uid="uid://b411g1xo5d7xo"]
 
 [ext_resource type="Script" path="res://Scenes/menu.gd" id="1_m2aiy"]
-[ext_resource type="PackedScene" uid="uid://ba84fllgwg8ex" path="res://Scenes/level.tscn" id="2_y18ag"]
-[ext_resource type="AudioStream" uid="uid://r4ws5fdhn1c1" path="res://Assets/waiting-room.mp3" id="3_wy3y1"]
+[ext_resource type="FontFile" uid="uid://deusmoy1ctfwm" path="res://Assets/MedodicaRegular.otf" id="2_1ji6h"]
 
-[node name="Menu" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Menu2" type="Node2D"]
 script = ExtResource("1_m2aiy")
-level = ExtResource("2_y18ag")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -48.0
-offset_right = 48.0
-offset_bottom = 40.0
-grow_horizontal = 2
-theme_override_constants/margin_top = 112
-
-[node name="Title" type="Label" parent="CanvasLayer/MarginContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 68
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 133.0
+offset_top = 85.0
+offset_right = 534.0
+offset_bottom = 185.0
+theme_override_fonts/font = ExtResource("2_1ji6h")
+theme_override_font_sizes/font_size = 100
 text = "Game Name"
 
-[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -160.0
-offset_top = -100.0
-offset_right = 160.0
-offset_bottom = 100.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Buttons" type="CanvasGroup" parent="CanvasLayer"]
 
-[node name="HFlowContainer" type="HFlowContainer" parent="CanvasLayer/MarginContainer2"]
-layout_mode = 2
-theme_override_constants/v_separation = 16
-
-[node name="EasyButton" type="Button" parent="CanvasLayer/MarginContainer2/HFlowContainer"]
-custom_minimum_size = Vector2(320, 64)
-layout_mode = 2
-theme_override_font_sizes/font_size = 28
+[node name="Easy" type="Button" parent="CanvasLayer/Buttons"]
+offset_left = 186.0
+offset_top = 191.0
+offset_right = 466.0
+offset_bottom = 284.0
+theme_override_fonts/font = ExtResource("2_1ji6h")
+theme_override_font_sizes/font_size = 60
 text = "Easy"
 
-[node name="MediumButton" type="Button" parent="CanvasLayer/MarginContainer2/HFlowContainer"]
-custom_minimum_size = Vector2(320, 64)
-layout_mode = 2
-theme_override_font_sizes/font_size = 28
-text = "Normal"
+[node name="Medium" type="Button" parent="CanvasLayer/Buttons"]
+offset_left = 186.0
+offset_top = 295.0
+offset_right = 466.0
+offset_bottom = 388.0
+theme_override_fonts/font = ExtResource("2_1ji6h")
+theme_override_font_sizes/font_size = 60
+text = "Medium"
 
-[node name="HardButton" type="Button" parent="CanvasLayer/MarginContainer2/HFlowContainer"]
-custom_minimum_size = Vector2(320, 64)
-layout_mode = 2
-theme_override_font_sizes/font_size = 28
+[node name="Hard" type="Button" parent="CanvasLayer/Buttons"]
+offset_left = 186.0
+offset_top = 398.0
+offset_right = 466.0
+offset_bottom = 491.0
+theme_override_fonts/font = ExtResource("2_1ji6h")
+theme_override_font_sizes/font_size = 60
 text = "Hard"
-
-[node name="MarginContainer3" type="MarginContainer" parent="CanvasLayer"]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -40.0
-offset_top = -40.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_constants/margin_right = 32
-theme_override_constants/margin_bottom = 32
-
-[node name="ExtraText" type="Label" parent="CanvasLayer/MarginContainer3"]
-layout_mode = 2
-text = "Lorem ipsum dolor sit amet"
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_wy3y1")
-autoplay = true
