@@ -27,9 +27,10 @@ offset_right = 466.0
 offset_bottom = 284.0
 theme_override_fonts/font = ExtResource("2_1ji6h")
 theme_override_font_sizes/font_size = 60
-text = "Easy"
+text = "Play"
 
 [node name="Medium" type="Button" parent="CanvasLayer/Buttons"]
+visible = false
 offset_left = 186.0
 offset_top = 295.0
 offset_right = 466.0
@@ -39,6 +40,7 @@ theme_override_font_sizes/font_size = 60
 text = "Medium"
 
 [node name="Hard" type="Button" parent="CanvasLayer/Buttons"]
+visible = false
 offset_left = 186.0
 offset_top = 398.0
 offset_right = 466.0
