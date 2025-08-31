@@ -71,6 +71,11 @@ func upgrade_screen():
 		
 		#call _apply_upgrade with element as argument when button is pressed
 		child.pressed.connect(Callable(self, "apply_upgrade").bind(element))
+		
+		child.mouse_entered.connect(Callable(self, "_mouse_in").bind(child))
+		child.mouse_exited.connect(Callable(self, "_mouse_out").bind(child))
+		
+		child.pivot_offset = child.get_rect().size / 2
 	
 func apply_upgrade(upgrade_name):
 	if upgrade_name in upgrade_elements:
@@ -132,6 +137,8 @@ func _upgraded(price, upg_name):
 	#disconnect all previously connected signals
 	for child in $CanvasLayer/UpgradeScreen/MarginContainerButtons/VFlowContainer.get_children():
 		child.pressed.disconnect(Callable(self, "apply_upgrade"))
+		child.pressed.disconnect(Callable(self, "_mouse_in"))
+		child.pressed.disconnect(Callable(self, "_mouse_out"))
 	
 	#hide the screen and continue the gameplay
 	$CanvasLayer/UpgradeScreen.hide()
@@ -162,6 +169,13 @@ func _game_over(depth):
 	$CanvasLayer/GameOver.visible = true
 	$CanvasLayer/GameOver/MarginContainer3/Label.text = "Depth: " + str(depth)
 
-
 func _on_play_again_pressed():
 	get_tree().change_scene_to_file("res://Scenes/level.tscn")
+
+func _mouse_in(node):
+	var tween = create_tween()
+	tween.tween_property(node, "scale", 1.1 * Vector2.ONE, 0.2)
+
+func _mouse_out(node):
+	var tween = create_tween()
+	tween.tween_property(node, "scale", Vector2.ONE, 0.2)

@@ -41,16 +41,18 @@ func _process(delta):
 	move_and_slide()
 
 func take_damage():
-	health -= 1
-	invincible = true
-	
-	if shield:
-		health += 1
+	if not shield:
+		health -= 1
+	else:
 		shield = false
+		
+	invincible = true
+		
 	
 	if health == 0:
 		get_parent()._game_over()
 		return
+	
 	$InvincibleTimer.start()
 	invincible_fx()
 	

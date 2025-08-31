@@ -104,6 +104,7 @@ position = Vector2(584, 64)
 script = ExtResource("12_j1g0j")
 
 [node name="Sprite2D" type="Sprite2D" parent="Camera2D"]
+position = Vector2(0, 656)
 scale = Vector2(5.15, 5.15)
 texture = ExtResource("9_m3kdv")
 region_enabled = true

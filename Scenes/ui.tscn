@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://7nodsdgru6nd"]
+[gd_scene load_steps=6 format=3 uid="uid://7nodsdgru6nd"]
 
 [ext_resource type="Script" path="res://Scenes/ui.gd" id="1_wg176"]
 [ext_resource type="Texture2D" uid="uid://cdiq2xm0g2my4" path="res://Assets/heart_full.png" id="2_od42e"]
 [ext_resource type="Texture2D" uid="uid://4n1ycpv03a0c" path="res://Assets/heart_empty.png" id="3_su6do"]
 [ext_resource type="Texture2D" uid="uid://cbt6imlm2cqi5" path="res://Assets/coin_def.png" id="4_uwu2c"]
+[ext_resource type="StyleBox" uid="uid://l3ihy0jo7wh7" path="res://ui.tres" id="5_qelu1"]
 
 [node name="UI" type="Control"]
 process_mode = 3
@@ -137,19 +138,56 @@ theme_override_constants/h_separation = 16
 [node name="option1" type="Button" parent="CanvasLayer/UpgradeScreen/MarginContainerButtons/VFlowContainer"]
 custom_minimum_size = Vector2(128, 256)
 layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = ExtResource("5_qelu1")
+theme_override_styles/hover = ExtResource("5_qelu1")
+theme_override_styles/pressed = ExtResource("5_qelu1")
+theme_override_styles/disabled = ExtResource("5_qelu1")
+theme_override_styles/focus = ExtResource("5_qelu1")
 text = "option 1"
 
 [node name="option2" type="Button" parent="CanvasLayer/UpgradeScreen/MarginContainerButtons/VFlowContainer"]
 custom_minimum_size = Vector2(128, 256)
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = ExtResource("5_qelu1")
+theme_override_styles/hover = ExtResource("5_qelu1")
+theme_override_styles/pressed = ExtResource("5_qelu1")
+theme_override_styles/disabled = ExtResource("5_qelu1")
+theme_override_styles/focus = ExtResource("5_qelu1")
 text = "option 2"
 
 [node name="option3" type="Button" parent="CanvasLayer/UpgradeScreen/MarginContainerButtons/VFlowContainer"]
 custom_minimum_size = Vector2(128, 256)
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = ExtResource("5_qelu1")
+theme_override_styles/hover = ExtResource("5_qelu1")
+theme_override_styles/pressed = ExtResource("5_qelu1")
+theme_override_styles/disabled = ExtResource("5_qelu1")
+theme_override_styles/focus = ExtResource("5_qelu1")
 text = "option 3"
 
 [node name="MarginContainerLabel" type="MarginContainer" parent="CanvasLayer/UpgradeScreen"]
@@ -186,7 +224,14 @@ grow_vertical = 0
 theme_override_constants/margin_bottom = 128
 
 [node name="skipbutton" type="Button" parent="CanvasLayer/UpgradeScreen/MarginContainer"]
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = ExtResource("5_qelu1")
+theme_override_styles/hover = ExtResource("5_qelu1")
+theme_override_styles/pressed = ExtResource("5_qelu1")
+theme_override_styles/disabled = ExtResource("5_qelu1")
+theme_override_styles/focus = ExtResource("5_qelu1")
 text = "Skip for this one"
 
 [node name="PauseMenu" type="ColorRect" parent="CanvasLayer"]

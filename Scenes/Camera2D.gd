@@ -16,11 +16,14 @@ func _process(delta):
 	global_position.y += 50 * delta
 	$Sprite2D.region_rect.position.y += 10 * delta
 	
+	if $Sprite2D.region_rect.position.y >= 384:
+		$Sprite2D.region_rect.position.y = 0
+	
 	if !GlobalScript.GameOver: 
 		meters = round(global_position.y / 15.0)
 	
 	#check if meters is a multiple of 150
-	if meters % 100 == 0 and not meters == 0 and not last_milestone == meters:
+	if meters % 10 == 0 and not meters == 0 and not last_milestone == meters:
 		$"../UI".upgrade_screen()
 		last_milestone = meters
 	
