@@ -3,15 +3,18 @@
 [ext_resource type="Script" path="res://Scenes/shark.gd" id="1_x0kfr"]
 [ext_resource type="Texture2D" uid="uid://bsk8cismd5c2w" path="res://Assets/shark.png" id="2_yu8jr"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4bjt2"]
-size = Vector2(256, 128)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h8k8h"]
+radius = 44.0
+height = 252.0
 
 [node name="Shark" type="Area2D"]
 script = ExtResource("1_x0kfr")
 speed = 150
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_4bjt2")
+position = Vector2(-4, 6)
+rotation = -1.57079
+shape = SubResource("CapsuleShape2D_h8k8h")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5

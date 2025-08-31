@@ -5,8 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://ijtfn8fhgrad" path="res://Assets/turtle.png" id="3_3x8wl"]
 [ext_resource type="Shader" path="res://Scenes/hit.gdshader" id="3_6r4rn"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_u4ejo"]
-size = Vector2(48, 48)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hs25o"]
+radius = 20.0
+height = 48.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_n45ul"]
 shader = ExtResource("3_6r4rn")
@@ -52,7 +53,7 @@ animations = [{
 script = ExtResource("1_18n0n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_u4ejo")
+shape = SubResource("CapsuleShape2D_hs25o")
 
 [node name="shield_placeholder" type="Sprite2D" parent="."]
 visible = false
