@@ -6,7 +6,7 @@ var air_left: float = 100.0
 var max_air: float = 100.0
 var magnet_strength: int = 0
 
-var coins: int = 0
+var coins: int = 999
 
 var shield: bool = false
 
@@ -43,6 +43,10 @@ func _process(delta):
 func take_damage():
 	health -= 1
 	invincible = true
+	
+	if shield:
+		health += 1
+		shield = false
 	
 	if health == 0:
 		get_parent()._game_over()
