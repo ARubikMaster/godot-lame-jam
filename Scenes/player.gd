@@ -14,11 +14,10 @@ var health = 3
 var invincible: bool = false
 
 var upgrade_levels: Dictionary = {
-	"air capacity": 1,
+	"air hold": 1,
 	"speed": 1,
-	"reward gain": 1,
+	"luck": 1,
 	"magnet": 1
-	#"luck": 1 (if more chest reward types are gonna be added)
 	}
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

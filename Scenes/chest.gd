@@ -26,7 +26,7 @@ func _on_body_entered(body):
 		match  reward_type:
 			"coins":
 				var gain = snapped(randi_range(20, 40), 5)
-				var multiplier = (1 + (0.15 * (body.upgrade_levels["reward gain"] - 1)))
+				var multiplier = (1 + (0.15 * (body.upgrade_levels["luck"] - 1)))
 				
 				$CPUParticles2D.color = Color.YELLOW
 				$CPUParticles2D.emitting = true

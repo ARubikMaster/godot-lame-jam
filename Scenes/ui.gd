@@ -1,19 +1,41 @@
 extends Control
 
-var upgrade_elements: Array = ["air capacity", "speed", "reward gain", "magnet"]
+var upgrade_elements: Array = ["air hold", "speed", "luck", "magnet"]
 var powerup_elements: Array = ["shield", "health"]
 
 var can_pause: bool = true
 
 var prices: Dictionary = {
-	"air capacity": 20,
+	"air hold": 20,
 	"speed": 30,
-	"reward gain": 30,
+	"luck": 30,
 	"magnet": 25,
 	"shield": 75,
 	"health": 50
-	#"luck": 1 (if more chest reward types are gonna be added)
-	}
+}
+
+var upgrade_sprites = {
+	"air hold": preload("res://Assets/lungs.png"),
+	"speed": preload("res://Assets/speed.png"),
+	"luck": preload("res://Assets/luck.png"),
+	"magnet": preload("res://Assets/magnet.png"),
+	"shield": preload("res://Assets/shield.png"),
+	"health": preload("res://Assets/heart_full.png")
+}
+	
+var roman_numerals = {
+	1:"I", 2:"II", 3:"III", 4:"IV", 5:"V",
+	6:"VI", 7:"VII", 8:"VIII", 9:"IX", 10:"X",
+	11:"XI", 12:"XII", 13:"XIII", 14:"XIV", 15:"XV",
+	16:"XVI", 17:"XVII", 18:"XVIII", 19:"XIX", 20:"XX",
+	21:"XXI", 22:"XXII", 23:"XXIII", 24:"XXIV", 25:"XXV",
+	26:"XXVI", 27:"XXVII", 28:"XXVIII", 29:"XXIX", 30:"XXX",
+	31:"XXXI", 32:"XXXII", 33:"XXXIII", 34:"XXXIV", 35:"XXXV",
+	36:"XXXVI", 37:"XXXVII", 38:"XXXVIII", 39:"XXXIX", 40:"XL",
+	41:"XLI", 42:"XLII", 43:"XLIII", 44:"XLIV", 45:"XLV",
+	46:"XLVI", 47:"XLVII", 48:"XLVIII", 49:"XLIX", 50:"L"
+} # idk if you put the cap so just in case
+
 @export var heart_full: Texture2D
 @export var heart_empty: Texture2D
 
@@ -42,6 +64,20 @@ func _process(_delta):
 	
 	if Input.is_action_just_pressed("pause") and can_pause:
 		_pause()
+
+	var bar = $CanvasLayer/MarginContainerProgress/ProgressBar
+
+	var fill_stylebox = bar.get_theme_stylebox("fill")
+	if fill_stylebox is StyleBoxTexture:
+		fill_stylebox.modulate_color = Color(0, 174/255.0, 1) # red tint
+		bar.add_theme_stylebox_override("fill", fill_stylebox)
+
+	if $"../Player".air_left <= 20:
+		if int($"../Player".air_left) % 2 == 1:
+			fill_stylebox = bar.get_theme_stylebox("fill")
+			if fill_stylebox is StyleBoxTexture:
+				fill_stylebox.modulate_color = Color(1, 0, 0)
+				bar.add_theme_stylebox_override("fill", fill_stylebox)
 	
 func upgrade_screen():
 	#pause the gameplay
@@ -67,7 +103,16 @@ func upgrade_screen():
 		elif element in powerup_elements:
 			price = prices[element]
 		
-		child.text = element + "\n" + str(price) + " coins"
+		if element in upgrade_elements:
+			var level = roman_numerals[$"../Player".upgrade_levels[element]]
+			child.text = element + "\nLevel " + level + "\n" + str(price) + " coins"
+		else:
+			child.text = element + "\n" + str(price) + " coins"
+			
+		var sprite = child.get_node("Sprite2D")
+		if sprite:
+			sprite.texture = upgrade_sprites[element]
+
 		
 		#call _apply_upgrade with element as argument when button is pressed
 		child.pressed.connect(Callable(self, "apply_upgrade").bind(element))
@@ -83,7 +128,7 @@ func apply_upgrade(upgrade_name):
 		
 		if $"../Player".coins >= price:
 			match upgrade_name:
-				"air capacity":
+				"air hold":
 					$"../Player".max_air += 15
 					
 				"speed":

@@ -24,6 +24,7 @@ func _process(delta):
 	
 	#check if meters is a multiple of 150
 	if meters % 100 == 0 and not meters == 0 and not last_milestone == meters:
+		print("Upgrade screen")
 		$"../UI".upgrade_screen()
 		last_milestone = meters
 	
