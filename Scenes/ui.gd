@@ -1,23 +1,23 @@
 extends Control
 
-var upgrade_elements: Array = ["air hold", "speed", "luck", "magnet"]
+var upgrade_elements: Array = ["max Air", "speed", "fortune", "magnet"]
 var powerup_elements: Array = ["shield", "health"]
 
 var can_pause: bool = true
 
 var prices: Dictionary = {
-	"air hold": 20,
+	"max Air": 20,
 	"speed": 30,
-	"luck": 30,
+	"fortune": 30,
 	"magnet": 25,
 	"shield": 75,
 	"health": 50
 }
 
 var upgrade_sprites = {
-	"air hold": preload("res://Assets/lungs.png"),
+	"max Air": preload("res://Assets/lungs.png"),
 	"speed": preload("res://Assets/speed.png"),
-	"luck": preload("res://Assets/luck.png"),
+	"fortune": preload("res://Assets/chest_closed.png"),
 	"magnet": preload("res://Assets/magnet.png"),
 	"shield": preload("res://Assets/shield.png"),
 	"health": preload("res://Assets/heart_full.png")
@@ -36,12 +36,20 @@ var roman_numerals = {
 	46:"XLVI", 47:"XLVII", 48:"XLVIII", 49:"XLIX", 50:"L"
 } # idk if you put the cap so just in case
 
+var button_signals = {}
+
 @export var heart_full: Texture2D
 @export var heart_empty: Texture2D
 
+var factor: float = 1.0
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	if GlobalScript.diff == "Easy":
+		factor = 0.5
+		
+	elif GlobalScript.diff == "Hard":
+		factor = 2
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -68,57 +76,94 @@ func _process(_delta):
 	var bar = $CanvasLayer/MarginContainerProgress/ProgressBar
 
 	var fill_stylebox = bar.get_theme_stylebox("fill")
-	if fill_stylebox is StyleBoxTexture:
-		fill_stylebox.modulate_color = Color(0, 174/255.0, 1) # red tint
+	if fill_stylebox is StyleBox:
+		fill_stylebox.bg_color = Color(0, 155, 255, 0.5)
 		bar.add_theme_stylebox_override("fill", fill_stylebox)
 
-	if $"../Player".air_left <= 20:
+	if $"../Player".air_left <= 40:	
 		if int($"../Player".air_left) % 2 == 1:
 			fill_stylebox = bar.get_theme_stylebox("fill")
-			if fill_stylebox is StyleBoxTexture:
-				fill_stylebox.modulate_color = Color(1, 0, 0)
+			
+			if fill_stylebox is StyleBox:
+				fill_stylebox.bg_color = Color(1, 0, 0, 0.5)
 				bar.add_theme_stylebox_override("fill", fill_stylebox)
 	
 func upgrade_screen():
-	#pause the gameplay
+	# collect upgrades that are not maxed
+	var available_elements: Array = []
+	for upgrade in upgrade_elements:
+		if $"../Player".upgrade_levels[upgrade] < 5:
+			available_elements.append(upgrade)
+	
+	# collect valid powerups
+	for powerup in powerup_elements:
+		if powerup == "health" and $"../Player".health >= 3:
+			continue
+		elif powerup == "shield" and $"../Player".shield:
+			continue
+		else:
+			available_elements.append(powerup)
+	
+	# filter only affordable
+	var affordable_elements: Array = []
+	for element in available_elements:
+		var price = 0
+		
+		if element in upgrade_elements:
+			price = round(prices[element] * $"../Player".upgrade_levels[element] * factor)
+		else:
+			price = round(prices[element] * factor)
+		
+		if $"../Player".coins >= price:
+			affordable_elements.append(element)
+	
+	# skip screen if nothing can be picked
+	if affordable_elements.is_empty():
+		return
+	
 	get_tree().paused = true
 	can_pause = false
 	$CanvasLayer/UpgradeScreen.show()
-	
 	$"../Music".bus = "Muffled"
 	
-	#merge upgrades and powerups array
-	var all_elements: Array = upgrade_elements + powerup_elements
+	# shuffle and only take 3 max
+	affordable_elements.shuffle()
+	var children = $CanvasLayer/UpgradeScreen/MarginContainerButtons/VFlowContainer.get_children()
 	
-	#assign random element to each button
-	for child in $CanvasLayer/UpgradeScreen/MarginContainerButtons/VFlowContainer.get_children():
-		var element = all_elements.pick_random()
-		all_elements.erase(element)
+	for i in range(children.size()):
+		var child = children[i]
 		
-		var price
+		if i >= affordable_elements.size() or i >= 3:
+			child.hide()
+			continue
+		else:
+			child.show()
 		
+		var element = affordable_elements[i]
+		var price = 0
 		if element in upgrade_elements:
-			price = prices[element] * $"../Player".upgrade_levels[element]
-		
-		elif element in powerup_elements:
-			price = prices[element]
-		
-		if element in upgrade_elements:
+			price = round(prices[element] * $"../Player".upgrade_levels[element] * factor)
+			
 			var level = roman_numerals[$"../Player".upgrade_levels[element]]
 			child.text = element + "\nLevel " + level + "\n" + str(price) + " coins"
 		else:
+			price = round(prices[element] * factor)
 			child.text = element + "\n" + str(price) + " coins"
-			
+		
 		var sprite = child.get_node("Sprite2D")
 		if sprite:
 			sprite.texture = upgrade_sprites[element]
-
 		
-		#call _apply_upgrade with element as argument when button is pressed
-		child.pressed.connect(Callable(self, "apply_upgrade").bind(element))
+		# reset signals before reusing
+		var pressed_callable = Callable(self, "apply_upgrade").bind(element)
+		var entered_callable = Callable(self, "_mouse_in").bind(child)
+		var exited_callable = Callable(self, "_mouse_out").bind(child)
 		
-		child.mouse_entered.connect(Callable(self, "_mouse_in").bind(child))
-		child.mouse_exited.connect(Callable(self, "_mouse_out").bind(child))
+		child.pressed.connect(pressed_callable)
+		child.mouse_entered.connect(entered_callable)
+		child.mouse_exited.connect(exited_callable)
+		
+		button_signals[child] = [pressed_callable, entered_callable, exited_callable]
 		
 		child.pivot_offset = child.get_rect().size / 2
 	
@@ -128,7 +173,7 @@ func apply_upgrade(upgrade_name):
 		
 		if $"../Player".coins >= price:
 			match upgrade_name:
-				"air hold":
+				"max Air":
 					$"../Player".max_air += 15
 					
 				"speed":
@@ -176,14 +221,19 @@ func _upgraded(price, upg_name):
 	
 	$"../Music".bus = "Master"
 	
+	if price != 0:
+		$Upg.play()
+	
 	if upg_name in upgrade_elements:
 		$"../Player".upgrade_levels[upg_name] += 1
 	
 	#disconnect all previously connected signals
-	for child in $CanvasLayer/UpgradeScreen/MarginContainerButtons/VFlowContainer.get_children():
-		child.pressed.disconnect(Callable(self, "apply_upgrade"))
-		child.mouse_entered.disconnect(Callable(self, "_mouse_in"))
-		child.mouse_exited.disconnect(Callable(self, "_mouse_out"))
+	for child in button_signals.keys():
+		var cbs = button_signals[child]
+		child.pressed.disconnect(cbs[0])
+		child.mouse_entered.disconnect(cbs[1])
+		child.mouse_exited.disconnect(cbs[2])
+	button_signals.clear()
 	
 	#hide the screen and continue the gameplay
 	$CanvasLayer/UpgradeScreen.hide()
@@ -193,7 +243,7 @@ func _upgraded(price, upg_name):
 func _pause():
 	$CanvasLayer/PauseMenu.visible = not $CanvasLayer/PauseMenu.visible
 	get_tree().paused = not get_tree().paused
-	$"../Music".playing = not $"../Music".playing
+	$"../Music".stream_paused = not $"../Music".stream_paused
 	$"../MusicTimer".paused = not $"../MusicTimer".paused
 	
 func _on_resume_button_pressed():
@@ -204,14 +254,19 @@ func _on_back_to_menu_pressed():
 	get_tree().change_scene_to_file("res://Scenes/menu.tscn")
 
 func _game_over(depth):
-	can_pause = false 
+	can_pause = false
 	GlobalScript.GameOver = true
+	
+	$"../Player".hide()
+	
 	if $"../Music":
 		$"../Music".stop()
 	if $"../MusicTimer":
 		$"../MusicTimer".stop()
+	
 	$CanvasLayer/PauseMenu.visible = false
 	$CanvasLayer/GameOver.visible = true
+	
 	$CanvasLayer/GameOver/MarginContainer3/Label.text = "Depth: " + str(depth)
 
 func _on_play_again_pressed():

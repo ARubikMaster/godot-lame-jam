@@ -13,5 +13,5 @@ func _ready():
 		child.pressed.connect(Callable(self, "play").bind(child.text))
 
 func play(diff):
-	GlobalScript.current_diff = diff
+	GlobalScript.diff = diff
 	get_tree().change_scene_to_file("res://Scenes/level.tscn")

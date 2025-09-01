@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://ba84fllgwg8ex"]
+[gd_scene load_steps=24 format=3 uid="uid://ba84fllgwg8ex"]
 
 [ext_resource type="Script" path="res://Scenes/Camera2D.gd" id="1_hmxxd"]
 [ext_resource type="Script" path="res://Scenes/level.gd" id="1_lb2nx"]
@@ -8,14 +8,15 @@
 [ext_resource type="Texture2D" uid="uid://d3gxmvn7jx4pl" path="res://Assets/bubble_placeholder.png" id="3_r4h1b"]
 [ext_resource type="PackedScene" uid="uid://cbibuy8r2xa33" path="res://Scenes/coin.tscn" id="4_0vlq5"]
 [ext_resource type="PackedScene" uid="uid://7nodsdgru6nd" path="res://Scenes/ui.tscn" id="4_tkrgx"]
-[ext_resource type="PackedScene" path="res://Scenes/shark_lane.tscn" id="5_aqw7x"]
-[ext_resource type="PackedScene" path="res://Scenes/crocodile.tscn" id="6_ja86b"]
+[ext_resource type="PackedScene" uid="uid://m4s4nwfxds8h" path="res://Scenes/shark_lane.tscn" id="5_aqw7x"]
+[ext_resource type="PackedScene" uid="uid://sh1hoor77f" path="res://Scenes/crocodile.tscn" id="6_ja86b"]
 [ext_resource type="Script" path="res://Scenes/music.gd" id="7_xgr7q"]
 [ext_resource type="Script" path="res://Scenes/music_timer.gd" id="8_yfgww"]
 [ext_resource type="Texture2D" uid="uid://dlblm2wdatcyb" path="res://Assets/bg.png" id="9_m3kdv"]
 [ext_resource type="Texture2D" uid="uid://o67ffxrj2f10" path="res://Assets/warning.png" id="11_l1gyy"]
-[ext_resource type="Script" path="res://Scenes/Marker2D.gd" id="12_j1g0j"]
 [ext_resource type="AudioStream" uid="uid://co2o6670dnqq3" path="res://Assets/coin.wav" id="13_bxs7y"]
+[ext_resource type="AudioStream" uid="uid://co5ct1lwig064" path="res://Assets/hitHurt.wav" id="17_ualjm"]
+[ext_resource type="AudioStream" uid="uid://dwpw8g8rk1xna" path="res://Assets/bubble.wav" id="18_muvih"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fv4aa"]
 size = Vector2(657, 656)
@@ -102,10 +103,6 @@ position = Vector2(0, 324)
 position = Vector2(0, 28)
 shape = SubResource("RectangleShape2D_61xx8")
 
-[node name="Marker2D" type="Marker2D" parent="Camera2D"]
-position = Vector2(584, 64)
-script = ExtResource("12_j1g0j")
-
 [node name="Sprite2D" type="Sprite2D" parent="Camera2D"]
 position = Vector2(0, 656)
 scale = Vector2(5.15, 5.15)
@@ -146,6 +143,13 @@ script = ExtResource("8_yfgww")
 [node name="CoinSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_bxs7y")
 max_polyphony = 5
+
+[node name="DamageSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_ualjm")
+max_polyphony = 5
+
+[node name="BubbleSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_muvih")
 
 [connection signal="body_exited" from="Camera2D/GameplayArea" to="Camera2D" method="_on_gameplay_area_body_exited"]
 [connection signal="timeout" from="ChestSpawnTimer" to="." method="_on_chest_spawn_timer_timeout"]

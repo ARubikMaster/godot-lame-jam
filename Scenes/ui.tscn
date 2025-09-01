@@ -1,20 +1,34 @@
-[gd_scene load_steps=15 format=3 uid="uid://7nodsdgru6nd"]
+[gd_scene load_steps=27 format=3 uid="uid://7nodsdgru6nd"]
 
 [ext_resource type="Script" path="res://Scenes/ui.gd" id="1_wg176"]
 [ext_resource type="Texture2D" uid="uid://cdiq2xm0g2my4" path="res://Assets/heart_full.png" id="2_od42e"]
 [ext_resource type="Texture2D" uid="uid://4n1ycpv03a0c" path="res://Assets/heart_empty.png" id="3_su6do"]
-[ext_resource type="Texture2D" uid="uid://b1je77l8in1mq" path="res://Assets/bar2.png" id="4_23qxu"]
 [ext_resource type="Texture2D" uid="uid://cbt6imlm2cqi5" path="res://Assets/coin_def.png" id="4_uwu2c"]
-[ext_resource type="Texture2D" uid="uid://cljssmuuda2uv" path="res://Assets/bar1.png" id="5_gyh4p"]
-[ext_resource type="StyleBox" uid="uid://cprwy01piklfc" path="res://ui.tres" id="5_qelu1"]
-[ext_resource type="Texture2D" uid="uid://ce65tdfwpwfod" path="res://Scenes/32x12Button.png.png" id="8_gk48f"]
+[ext_resource type="AudioStream" uid="uid://dacvmagwdvmxl" path="res://Assets/powerUp.wav" id="5_sgnik"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vomyl"]
-texture = ExtResource("4_23qxu")
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uf368"]
+bg_color = Color(0, 0, 0, 0.392157)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_342bc"]
-texture = ExtResource("5_gyh4p")
-modulate_color = Color(0, 0.682353, 1, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_74vkr"]
+bg_color = Color(0, 0.607843, 1, 0.392157)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mw50u"]
+bg_color = Color(0, 1, 0.678431, 0.392157)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0.305882, 0.192157, 1)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5f0yk"]
 load_path = "res://.godot/imported/heart_full.png-4c9f4565bee3d30c7172028515ed9c4e.ctex"
@@ -25,8 +39,125 @@ load_path = "res://.godot/imported/heart_full.png-4c9f4565bee3d30c7172028515ed9c
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vq63e"]
 load_path = "res://.godot/imported/heart_full.png-4c9f4565bee3d30c7172028515ed9c4e.ctex"
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h4pag"]
-texture = ExtResource("8_gk48f")
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o0vdb"]
+bg_color = Color(0, 0, 0, 0.392157)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kmtcy"]
+bg_color = Color(0, 0, 0, 0.392157)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_koeyk"]
+bg_color = Color(0, 0, 0, 0.392157)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oa1e7"]
+bg_color = Color(0, 0, 0, 0.392157)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6irmi"]
+bg_color = Color(0, 0, 0, 0.392157)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yk3yq"]
+bg_color = Color(0, 0, 0, 0.392157)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8av36"]
+bg_color = Color(0, 0, 0, 0.392157)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7d70j"]
+bg_color = Color(0, 0, 0, 0.392157)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rdtc8"]
+bg_color = Color(0, 0, 0, 0.392157)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ob0jt"]
+bg_color = Color(0, 0, 0, 0.392157)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hr8ci"]
+bg_color = Color(0, 0, 0, 0.392157)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sfm5x"]
+bg_color = Color(0, 0, 0, 0.392157)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tawxy"]
+bg_color = Color(0, 0, 0, 0.392157)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lbq58"]
+bg_color = Color(0, 0, 0, 0.392157)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dpntl"]
+bg_color = Color(0, 0, 0, 0.392157)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
 
 [node name="UI" type="Control"]
 process_mode = 3
@@ -58,8 +189,8 @@ theme_override_constants/margin_bottom = 32
 [node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/MarginContainerProgress"]
 custom_minimum_size = Vector2(256, 48)
 layout_mode = 2
-theme_override_styles/background = SubResource("StyleBoxTexture_vomyl")
-theme_override_styles/fill = SubResource("StyleBoxTexture_342bc")
+theme_override_styles/background = SubResource("StyleBoxFlat_uf368")
+theme_override_styles/fill = SubResource("StyleBoxFlat_74vkr")
 max_value = 120.0
 value = 50.0
 show_percentage = false
@@ -72,6 +203,17 @@ theme_override_font_sizes/font_size = 32
 text = "100"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/MarginContainerProgress/ProgressBar"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = -32.0
+offset_right = 264.0
+offset_bottom = 16.0
+scale = Vector2(0.65, 0.65)
+theme_override_font_sizes/font_size = 36
+text = "AIR"
+vertical_alignment = 2
 
 [node name="MarginContainerMLabel" type="MarginContainer" parent="CanvasLayer"]
 offset_right = 40.0
@@ -165,18 +307,18 @@ custom_minimum_size = Vector2(128, 256)
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 28
-theme_override_styles/normal = ExtResource("5_qelu1")
-theme_override_styles/hover = ExtResource("5_qelu1")
-theme_override_styles/pressed = ExtResource("5_qelu1")
-theme_override_styles/disabled = ExtResource("5_qelu1")
-theme_override_styles/focus = ExtResource("5_qelu1")
+theme_override_styles/normal = SubResource("StyleBoxFlat_mw50u")
+theme_override_styles/hover = SubResource("StyleBoxFlat_mw50u")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_mw50u")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_mw50u")
+theme_override_styles/focus = SubResource("StyleBoxFlat_mw50u")
 text = "option 1"
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/UpgradeScreen/MarginContainerButtons/VFlowContainer/option1"]
@@ -188,18 +330,18 @@ texture = SubResource("CompressedTexture2D_5f0yk")
 custom_minimum_size = Vector2(128, 256)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 28
-theme_override_styles/normal = ExtResource("5_qelu1")
-theme_override_styles/hover = ExtResource("5_qelu1")
-theme_override_styles/pressed = ExtResource("5_qelu1")
-theme_override_styles/disabled = ExtResource("5_qelu1")
-theme_override_styles/focus = ExtResource("5_qelu1")
+theme_override_styles/normal = SubResource("StyleBoxFlat_mw50u")
+theme_override_styles/hover = SubResource("StyleBoxFlat_mw50u")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_mw50u")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_mw50u")
+theme_override_styles/focus = SubResource("StyleBoxFlat_mw50u")
 text = "option 2"
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/UpgradeScreen/MarginContainerButtons/VFlowContainer/option2"]
@@ -211,18 +353,18 @@ texture = SubResource("CompressedTexture2D_6tgp3")
 custom_minimum_size = Vector2(128, 256)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 28
-theme_override_styles/normal = ExtResource("5_qelu1")
-theme_override_styles/hover = ExtResource("5_qelu1")
-theme_override_styles/pressed = ExtResource("5_qelu1")
-theme_override_styles/disabled = ExtResource("5_qelu1")
-theme_override_styles/focus = ExtResource("5_qelu1")
+theme_override_styles/normal = SubResource("StyleBoxFlat_mw50u")
+theme_override_styles/hover = SubResource("StyleBoxFlat_mw50u")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_mw50u")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_mw50u")
+theme_override_styles/focus = SubResource("StyleBoxFlat_mw50u")
 text = "option 3"
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/UpgradeScreen/MarginContainerButtons/VFlowContainer/option3"]
@@ -267,11 +409,11 @@ theme_override_constants/margin_bottom = 128
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_styles/normal = SubResource("StyleBoxTexture_h4pag")
-theme_override_styles/hover = ExtResource("5_qelu1")
-theme_override_styles/pressed = ExtResource("5_qelu1")
-theme_override_styles/disabled = ExtResource("5_qelu1")
-theme_override_styles/focus = ExtResource("5_qelu1")
+theme_override_styles/normal = SubResource("StyleBoxFlat_o0vdb")
+theme_override_styles/hover = SubResource("StyleBoxFlat_kmtcy")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_koeyk")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_oa1e7")
+theme_override_styles/focus = SubResource("StyleBoxFlat_6irmi")
 text = "Skip for this one"
 
 [node name="PauseMenu" type="ColorRect" parent="CanvasLayer"]
@@ -319,6 +461,11 @@ custom_minimum_size = Vector2(256, 48)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_yk3yq")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8av36")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7d70j")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_rdtc8")
+theme_override_styles/focus = SubResource("StyleBoxFlat_ob0jt")
 text = "Resume"
 
 [node name="BackToMenu" type="Button" parent="CanvasLayer/PauseMenu/MarginContainer2/HFlowContainer"]
@@ -326,6 +473,11 @@ custom_minimum_size = Vector2(256, 48)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_yk3yq")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8av36")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7d70j")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_rdtc8")
+theme_override_styles/focus = SubResource("StyleBoxFlat_ob0jt")
 text = "Back To Menu"
 
 [node name="GameOver" type="ColorRect" parent="CanvasLayer"]
@@ -394,9 +546,30 @@ custom_minimum_size = Vector2(256, 48)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_hr8ci")
+theme_override_styles/hover = SubResource("StyleBoxFlat_sfm5x")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_tawxy")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_lbq58")
+theme_override_styles/focus = SubResource("StyleBoxFlat_dpntl")
 text = "Play Again"
+
+[node name="BackToMenu2" type="Button" parent="CanvasLayer/GameOver/MarginContainer2/HFlowContainer"]
+custom_minimum_size = Vector2(256, 48)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_yk3yq")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8av36")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7d70j")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_rdtc8")
+theme_override_styles/focus = SubResource("StyleBoxFlat_ob0jt")
+text = "Back To Menu"
+
+[node name="Upg" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_sgnik")
 
 [connection signal="pressed" from="CanvasLayer/UpgradeScreen/MarginContainer/skipbutton" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/PauseMenu/MarginContainer2/HFlowContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/PauseMenu/MarginContainer2/HFlowContainer/BackToMenu" to="." method="_on_back_to_menu_pressed"]
 [connection signal="pressed" from="CanvasLayer/GameOver/MarginContainer2/HFlowContainer/PlayAgain" to="." method="_on_play_again_pressed"]
+[connection signal="pressed" from="CanvasLayer/GameOver/MarginContainer2/HFlowContainer/BackToMenu2" to="." method="_on_back_to_menu_pressed"]

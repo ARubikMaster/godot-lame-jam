@@ -18,6 +18,8 @@ func _process(delta):
 func _on_body_entered(body):
 	if not opened and body.is_in_group("player"):
 		print("Chest opened")
+		$sfx.play()
+		
 		opened = true
 		get_parent().get_parent()._play_sfx()
 		$Sprite2D.texture = opened_texture
@@ -26,7 +28,7 @@ func _on_body_entered(body):
 		match  reward_type:
 			"coins":
 				var gain = snapped(randi_range(20, 40), 5)
-				var multiplier = (1 + (0.15 * (body.upgrade_levels["luck"] - 1)))
+				var multiplier = (1 + (0.15 * (body.upgrade_levels["fortune"] - 1)))
 				
 				$CPUParticles2D.color = Color.YELLOW
 				$CPUParticles2D.emitting = true

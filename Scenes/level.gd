@@ -13,6 +13,8 @@ extends Node2D
 var rng = RandomNumberGenerator.new()
 var paused = false
 
+var factor: float = 1.0
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	GlobalScript.GameOver = false
@@ -26,10 +28,16 @@ func _ready():
 	$CoinSpawnTimer.wait_time = randf_range(1.0, 2.0)
 	$CoinSpawnTimer.start()
 	
-	$SharkSpawnTimer.wait_time = randf_range(4.0, 7.0)
+	if GlobalScript.diff == "Easy":
+		factor = 2
+		
+	elif GlobalScript.diff == "Hard":
+		factor = 0.5
+
+	$SharkSpawnTimer.wait_time = randf_range(4.0, 7.0) * factor
 	$SharkSpawnTimer.start()
 	
-	$CrocodileSpawnTimer.wait_time = randf_range(5.0, 8.0)
+	$CrocodileSpawnTimer.wait_time = randf_range(5.0, 8.0) * factor
 	$CrocodileSpawnTimer.start()
 	
 	music.play_music()
@@ -37,10 +45,6 @@ func _ready():
 	var wait_time = rng.randi_range(60, 70)
 	music_timer.wait_time = wait_time
 	music_timer.start()
-
-func _game_over():
-	var depth = $Camera2D.meters
-	ui._game_over(depth)
 
 func _on_tank_spawn_timer_timeout():
 	$TankSpawnTimer.wait_time = randf_range(3.0, 6.0)
@@ -72,7 +76,7 @@ func _on_music_timer_timeout() -> void:
 	music_timer.start()
 
 func _on_shark_spawn_timer_timeout():
-	$SharkSpawnTimer.wait_time = randf_range(4.0, 7.0)
+	$SharkSpawnTimer.wait_time = randf_range(4.0, 7.0) * factor
 	
 	var directions: Array = [Vector2.LEFT, Vector2.RIGHT]
 	var new_shark = shark_scene.instantiate()
@@ -87,7 +91,7 @@ func _play_sfx():
 	$CoinSFX.play()
 
 func _on_crocodile_spawn_timer_timeout():
-	$CrocodileSpawnTimer.wait_time = randf_range(5.0, 8.0)
+	$CrocodileSpawnTimer.wait_time = randf_range(5.0, 8.0) * factor
 	
 	warning()
 

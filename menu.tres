@@ -1,6 +1,4 @@
-[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://cmsvcweg0bm8b"]
-
-[ext_resource type="Texture2D" uid="uid://btcw7q5iuloqk" path="res://Assets/menu.png" id="1_nno5s"]
+[gd_resource type="StyleBoxTexture" format=3 uid="uid://cmsvcweg0bm8b"]
 
 [resource]
-texture = ExtResource("1_nno5s")
+region_rect = Rect2(7.245, 0, 32, 16)
